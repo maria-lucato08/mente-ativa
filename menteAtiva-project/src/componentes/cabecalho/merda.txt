@@ -1,0 +1,12 @@
+ {/* <img
+        src="./assets/menteAtiva.png"
+        alt="Mente Ativa Logo"
+        className="logo"
+        width={500}
+        height={500}
+      />
+      <img src="./assets/logo.png"
+       alt="Mente Ativa Logo" 
+       className="logo" 
+       width={400} 
+       height={400} /> */}

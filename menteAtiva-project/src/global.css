@@ -1,0 +1,17 @@
+:root{
+    --azulEscuro: #1e3a4f;
+    --azul: #2e5d9f;
+    --cinzaEsbranquicado: #f4f6f8;
+    --branco: #ffffff;
+    --amarelo: #d4af37;
+}
+
+* main{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--cinzaClaro);
+}
