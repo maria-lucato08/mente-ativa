@@ -1,10 +1,12 @@
-import { Cabecalho } from "./componentes";
-import "./App.css";
+import { Cabecalho, Conteudo, Rodape } from "./componentes";
+import "./global.css";
 
 function App() {
   return (
    <>
     <Cabecalho/>
+    <Conteudo/>
+    <Rodape/>
    </> 
   );
 };

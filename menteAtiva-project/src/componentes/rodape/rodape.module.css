@@ -1,0 +1,73 @@
+.rodape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  background-color: var(--cinzaEsbranquecido); /* fundo branco */
+  padding: 40px 20px;
+  border-top: 2px solid #e5e5e5;
+  font-family: sans-serif;
+}
+
+.rodape > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* Coluna da logo e redes sociais */
+.rodape > div > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Redes sociais */
+.rodape > div > div:first-child > div {
+  display: flex;
+  gap: 15px;
+}
+
+.rodape > div > div:first-child > div a img {
+  width: 22px;
+  height: 22px;
+  filter: grayscale(100%); /* ícones cinza */
+  transition: 0.3s;
+}
+
+.rodape > div > div:first-child > div a img:hover {
+  filter: grayscale(0%); /* volta à cor original */
+}
+
+/* Títulos */
+.rodape h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+/* Listas */
+.rodape ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rodape li {
+  margin: 6px 0;
+}
+
+.rodape a {
+  text-decoration: none;
+  color: #828282;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.rodape a:hover {
+  color: var(--azulEscuro); /* azul no hover */
+}

@@ -1,6 +1,6 @@
 .botao[tipo="primario"] {
-  background-color: #1e3a4f;
-  color: #ffffff;
+  background-color: var(--azulEscuro);
+  color: var(--branco);
   border: none;
   font-size: 15px;
   font-family: sans-serif;
@@ -13,7 +13,7 @@
 }
 
 .botao[tipo="secundario"] {
-  background-color: #d4af37;
+  background-color: var(--amarelo);
   color: #000000;
   border: none;
   font-size: 15px;
