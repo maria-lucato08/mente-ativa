@@ -1,14 +1,13 @@
-import { Cabecalho, Conteudo, Rodape } from "./componentes";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Routes";
 import "./global.css";
 
 function App() {
   return (
-   <>
-    <Cabecalho/>
-    <Conteudo/>
-    <Rodape/>
-   </> 
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
-};
+}
 
 export default App;
