@@ -1,6 +1,8 @@
+import style from './materias.module.css';
+
 const Materias = () => {
     return(
-        <h1>Materias</h1>
+        <h1 className={style.materias}>Materias</h1>
     )
 };
 
