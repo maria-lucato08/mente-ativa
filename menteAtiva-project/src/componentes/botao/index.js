@@ -1,2 +1,2 @@
-export * from "./botao";
+export * from "./Botao";
 export * from "./constantes";

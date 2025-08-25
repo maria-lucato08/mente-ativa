@@ -1,1 +1,1 @@
-export * from "./quemSomos";
+export * from "./QuemSomos";
