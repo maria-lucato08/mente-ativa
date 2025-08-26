@@ -47,7 +47,7 @@
 /* Botão primário (Entrar) */
 .cabecalho button:first-of-type {
   background-color: var(--azulEscuro); /* azul escuro */
-  color: #fff;
+  color: var(--branco);
   border: none;
 }
 
@@ -58,7 +58,7 @@
 /* Botão secundário (Criar conta) */
 .cabecalho button:last-of-type {
   background-color: var(--amarelo); /* amarelo dourado */
-  color: #000;
+  color: var(--preto);
   border: none;
 }
 

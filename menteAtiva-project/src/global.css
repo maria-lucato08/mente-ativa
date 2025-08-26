@@ -1,9 +1,12 @@
 :root{
     --azulEscuro: #1e3a4f;
+    --azulMaisEscuro: #02141f;
     --azul: #2e5d9f;
     --cinzaEsbranquicado: #f4f6f8;
     --branco: #ffffff;
     --amarelo: #d4af37;
+    --preto: #000000;
+
     /* --cizaClaro: #d2d2d2; */
 }
 

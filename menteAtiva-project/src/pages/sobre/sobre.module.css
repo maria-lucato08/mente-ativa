@@ -1,6 +1,7 @@
 /* HERO */
 .Sobre {
   font-family: sans-serif; 
+  height: 100hv;
 }
 
 .hero {
@@ -28,9 +29,10 @@
 }
 
 .overlay h1 {
-  font-size: 42px;
+  font-size: 59px;
   margin-bottom: 15px;
   font-weight: 800;
+  text-shadow: 4px 3px 4px var(--azulMaisEscuro);
 }
 
 .overlay p {
