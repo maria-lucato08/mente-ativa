@@ -4,11 +4,13 @@
 }
 
 .hero {
-  background-image: url("./assets/sobre.png"); /* Note a barra inicial */
+  background-image: url('/assets/SOBRE.png'); /* Note a barra inicial */
+  margin: 35px;
+  border-radius: 12px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 60vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +21,6 @@
 
 
 .overlay {
-  background: var(--azulEscuro);
   color: var(--branco);
   text-align: center;
   padding: 40px;
@@ -60,8 +61,10 @@
   gap: 40px;
 }
 
+
+
 .card {
-  background: #ffffff;
+  background: var(--branco);
   border-radius: 16px;
   padding: 28px;
   box-shadow: 0 4px 12px var(--azulEscuro);

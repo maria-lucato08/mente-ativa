@@ -1,17 +1,21 @@
 import style from "./sobre.module.css";
+import sobreImg from "/assets/sobre.png";
 
 const Sobre = () => {
   return (
-    <div className={style.Sobre}> 
+    <div className={style.Sobre}>
       <main>
-        <section>
+        <section
+          className={style.hero}
+          style={{ backgroundImage: `url(${sobreImg})` }}
+        >
           <div className={style.overlay}>
             <h1>Sobre o Mente Ativa</h1>
             <p>
               Tornando o aprendizado mais acessível, motivador e eficiente para
               todos os estudantes do ensino médio.
             </p>
-            <button className={style.btnHero}>Saiba Mais</button>
+            {/* <button className={style.btnHero}>Saiba Mais</button> */}
           </div>
         </section>
 
@@ -26,7 +30,6 @@ const Sobre = () => {
                 preparar para o ENEM.
               </p>
             </div>
-          
           </section>
 
           <section className={style.card}>
