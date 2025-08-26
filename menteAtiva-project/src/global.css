@@ -4,6 +4,7 @@
     --cinzaEsbranquicado: #f4f6f8;
     --branco: #ffffff;
     --amarelo: #d4af37;
+    /* --cizaClaro: #d2d2d2; */
 }
 
 * main{
@@ -14,4 +15,9 @@
 
 body{
     background-color: var(--cinzaClaro);
+}
+
+/* Faz o main crescer e empurrar o rodapé */
+main {
+  flex: 1;
 }
