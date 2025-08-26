@@ -31,15 +31,17 @@ const QuemSomos = () => {
 
   return (
     <div className={style.QuemSomos}>
+      {/* Título */}
       <div className={style.osCriadores}>
-        <h1 className={style.titulo}>Os criadores</h1>
-        <p className={style.subtitulo}>Saiba mais sobre os criadoes do Mente Ativa!</p>
+        <h2>Os Criadores</h2>
+        <p>Saiba mais sobre os criadores do Mente Ativa!</p>
       </div>
-      <div>
-        {/* Imagem + botões */}
+
+      {/* Carrossel */}
+      <div > 
         <div className={style.carrosselConteudo}>
           <button
-            className={style.carroselBtn}
+            className={style.carrosselBtn}
             onClick={() => mudarCriador(-1)}
           >
             <ChevronLeft size={24} />
@@ -51,18 +53,28 @@ const QuemSomos = () => {
             className={style.carrosselImg}
           />
 
-          <button onClick={() => mudarCriador(1)} className={style.carroselBtn}>
+          <button
+            className={style.carrosselBtn}
+            onClick={() => mudarCriador(1)}
+          >
             <ChevronRight size={24} />
           </button>
+          </div>
         </div>
 
-        {/* Texto */}
+        {/* Texto do Criador */}
         <div className={style.info}>
+        <div className={style.pessoa}>
           <h2>{criadorAtual.nome}</h2>
           <p>{criadorAtual.descricao}</p>
         </div>
+         {/* Tragetória do Criador */}
+        <div className={style.pessoa}>
+          <h2>Tragetória de {criadorAtual.nome}</h2>
+          <p>{criadorAtual.descricao}</p>
+        </div>
+        </div>
       </div>
-    </div>
   );
 };
 
