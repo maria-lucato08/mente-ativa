@@ -4,7 +4,7 @@ import { useState } from "react";
 import style from "./quemSomos.module.css";
 
 const quemSomos = [
-  { nome: "Maria Elis", descricao: "descrição futura", imagem: "./assets/fotoTeste.png" },
+  { nome: "Maria Elis", descricao: "descrição futura", imagem: "./assets/fotoMaria.jpg  " },
   {
     nome: "Guilherme Vieira",
     descricao: "descrição futura",
@@ -15,7 +15,7 @@ const quemSomos = [
     descricao: "descrição futura",
     imagem: "./assets/fotoTeste.png",
   },
-  { nome: "Maxwell", descricao: "descrição futura", imagem: "./assets/fotoTeste.png" },
+  { nome: "Maxwell", descricao: "descrição futura", imagem: "./assets/fotoMaxwell.jpg" },
 ];
 const QuemSomos = () => {
   const [indice, setIndice] = useState(0);
