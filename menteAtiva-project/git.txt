@@ -2,5 +2,9 @@ git add .
 git commit -m "mensagem do commit"
 git push
 
+<<<<<<< HEAD
 vai tomar no cu
 vai vc 
+=======
+git pull origin main --> pegar os commit no repositorio
+>>>>>>> 2ab702e47d0881cc6f2c814198a3eb3f7a3204d9
