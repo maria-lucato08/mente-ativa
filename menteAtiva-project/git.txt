@@ -3,7 +3,3 @@ git commit -m "mensagem do commit"
 git push
 
 git pull origin main --> pegar os commit no repositorio
-
-vai tomar no cu
-
-nao
