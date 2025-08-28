@@ -1,0 +1,180 @@
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: var(--fonte);
+  color: #111;
+}
+
+/* Objetivo */
+.objetivo {
+  text-align: center;
+  padding: 40px 30px;
+  font-family: sans-serif;
+  background: linear-gradient(135deg, var(--azulEscuro), var(--azul));
+  border-radius: 20px;
+  box-shadow: 0 8px 20px var(--azul);
+  max-width: 1300px;
+  height: 400px;
+  margin: 40px 0;
+}
+
+.titulo {
+  font-size: 38px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--branco);
+}
+
+.descricao {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: var(--cinzaEsbranquicado);
+  line-height: 1.6;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--cinzaEsbranquicado);
+  border-radius: 16px;
+  padding: 30px 20px;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 15px 0 10px;
+  color: #1e3a8a;
+}
+
+.card p {
+  font-size: 15px;
+  color: var(--azulMaisEscuro);
+}
+
+/* Ícones */
+.icon {
+  color: #3b82f6;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .icon {
+  transform: rotate(10deg) scale(1.2);
+}
+
+.objetivo h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.objetivo p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.objetivo img {
+  width: 100%;
+  border-radius: 12px;
+  width: 200;
+}
+
+/* Vestibulares */
+.vestibularCard {
+  background: var(--cinza);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vestibularCard h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--azulEscuro);
+  margin-bottom: 10px;
+}
+
+.vestibularCard p {
+  color: var(--azulMaisEscuro);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.vestibularCard:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Botão chamativo */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--azulEscuro), var(--azul));
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px; 
+  font-weight: bold;
+  /* transition: transform 0.3s ease, background 0.3s ease; */
+}
+
+.btn a {
+  color: var(--branco);
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, var(--azul), var(--azulEscuro));
+  transform: scale(1.05);
+}
+
+/* Comentários */
+.comentarios {
+  margin: 60px 0;
+}
+
+.comentarios h2 {
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 220px;
+  padding: 20px;
+  border: 1px solid var(--branco);
+  border-radius: 12px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+}
+
+.card h4 {
+  margin-bottom: 10px;
+}
+
+.nome {
+  font-weight: bold;
+}

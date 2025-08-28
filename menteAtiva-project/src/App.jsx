@@ -1,12 +1,14 @@
-import { Cabecalho } from "./componentes";
-import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Routes";
+import "./global.css";
+import { Cadastro } from "./pages";
 
 function App() {
   return (
-   <>
-    <Cabecalho/>
-   </> 
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
-};
+}
 
 export default App;

@@ -1,9 +1,9 @@
 .botao[tipo="primario"] {
-  background-color: #1e3a4f;
-  color: #ffffff;
+  background-color: var(--azulEscuro);
+  color: var(--branco);
   border: none;
   font-size: 15px;
-  font-family: sans-serif;
+  font-family: var(--fonte);
   font-weight: 600;
   padding: 10px 20px;
   border-radius: 8px;
@@ -13,11 +13,11 @@
 }
 
 .botao[tipo="secundario"] {
-  background-color: #d4af37;
-  color: #000000;
+  background-color: var(--amarelo);
+  color: var(--preto);
   border: none;
   font-size: 15px;
-  font-family: sans-serif;
+  font-family: var(--fonte);
   font-weight: 600;  
   padding: 10px 20px;
   border-radius: 8px;

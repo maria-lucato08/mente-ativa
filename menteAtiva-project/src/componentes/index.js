@@ -1,3 +1,4 @@
-export * from "./cabecalho";
-export * from "./botao";
-export * from "./rodape";
+export * from "./Cabecalho";
+export * from "./Conteudo"
+export * from "./Botao";
+export * from "./Rodape";
