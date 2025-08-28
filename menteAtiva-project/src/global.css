@@ -2,26 +2,26 @@
     --azulEscuro: #1e3a4f;
     --azulMaisEscuro: #02141f;
     --azul: #2e5d9f;
+    --azulRoyal: #0f2647e6;
     --cinzaEsbranquicado: #f4f6f8;
     --cinza: #c2c2c2;
     --branco: #ffffff;
-    --amarelo: #d4af37;
+    --amarelo: #dbba00;
     --preto: #000000;
-
-    /* --cizaClaro: #d2d2d2; */
+    --fonte: "Poppins", sans-serif;
 }
 
-* main{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
 body{
     background-color: var(--cinzaClaro);
 }
 
-/* Faz o main crescer e empurrar o rodapé */
-main {
-  flex: 1;
-}

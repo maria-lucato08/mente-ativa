@@ -1,4 +1,224 @@
-.materias{
-    font-family: sans-serif;
-    text-align: center;
+/* ================= RESET ================= */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
+
+/* ================= CONTAINER ================= */
+.container {
+  background: linear-gradient(135deg, #0f2647, #1c3879);
+  color: var(--branco);
+  min-height: 100vh;
+  width: 100%;
+  font-family: var(--fonte);
+  overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: var(--azulRoyal);
+  backdrop-filter: blur(10px);
+  padding: 20px 50px;
+  z-index: 1000;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--branco);
+  font-weight: 600;
+  font-size: 1.25rem;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  border-radius: 8px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.navbar a:hover {
+  background: #ffffff1a;
+  transform: scale(1.08);
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--amarelo), #ff402f);
+  transition: width 0.4s;
+  border-radius: 2px;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background: var(--preto);
+  padding: 14px;
+  border-radius: 10px;
+  top: 120%;
+  left: 0;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeSlide 0.3s ease forwards;
+  min-width: 160px;
+}
+
+.dropdown:hover .submenu {
+  display: flex;
+}
+
+.submenu li a {
+  color: var(--branco);
+  padding: 8px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.submenu li a:hover {
+  background: #ffffff1a;
+  color: var(--amarelo);
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= HERO ================= */
+.hero {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  padding: 80px 40px;
+}
+
+.texto {
+  max-width: 520px;
+}
+
+.texto h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.texto h1 span {
+  color: var(--amarelo);
+}
+
+.texto p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin-bottom: 25px;
+}
+
+.cta {
+  background: linear-gradient(90deg, var(--amarelo), #ff402f);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  color: var(--preto);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  transform: scale(1.08);
+  box-shadow: 0px 4px 15px var(--preto);
+}
+
+.imagem img {
+  max-width: 400px;
+  border-radius: 14px;
+  box-shadow: 0px 6px 18px var(--preto);
+  transition: transform 0.4s ease;
+}
+
+.imagem img:hover {
+  transform: translateY(-12px) scale(1.07);
+}
+
+/* ================= MATERIAS / CARDS ================= */
+.materias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 40px;
+}
+
+.area {
+  background: linear-gradient(135deg, #1c3879, #0f2647);
+  border-radius: 15px;
+  padding: 25px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.area h3 {
+  font-size: 1.3rem;
+  margin: 0;
+  transition: opacity 0.3s;
+}
+
+.listaMaterias {
+  list-style: none;
+  margin: 20px 0 0 0;
+  padding: 0;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+.area:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.4);
+}
+
+.area:hover h3 {
+  opacity: 0.7;
+}
+
+.area:hover .listaMaterias {
+  opacity: 1;
+  max-height: 300px;
+}
+
+
+
+

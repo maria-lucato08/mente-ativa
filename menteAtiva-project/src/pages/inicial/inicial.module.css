@@ -2,7 +2,7 @@
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
-  font-family: Arial, sans-serif;
+  font-family: var(--fonte);
   color: #111;
 }
 
