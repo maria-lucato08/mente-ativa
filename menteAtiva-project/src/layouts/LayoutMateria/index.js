@@ -1,2 +1,1 @@
-export * from "./layoutPadrao";
 export * from "./LayoutMateria";

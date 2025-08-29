@@ -1,20 +1,26 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate} from "react-router-dom";
 
-import { LayoutPadrao } from "./layouts";
+import { LayoutMateria, LayoutPadrao } from "./layouts";
 
-import { Inicial, Materias, NotFound, QuemSomos, Sobre, Cadastro} from "./pages";
+import { Inicial, NotFound, QuemSomos, Sobre, Cadastro, Introducao, Matematica} from "./pages";
 
 const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<LayoutPadrao />}>
         <Route path="/" element={<Inicial />} />
-        <Route path="/materias" element={<Materias />} />
+
+        <Route path="/materias" element={<LayoutMateria />}>
+          <Route index element={<Navigate to="introducao" replace />} />
+          <Route path="introducao" element={<Introducao />} />
+          <Route path="matematica" element={<Matematica />} />
+        </Route>
+
         <Route path="/quem-somos" element={<QuemSomos />} />
         <Route path="/sobre" element={<Sobre />} />
-        <Route path="/entrar" element={<Cadastro/>} />
-         {/* <Route path="/cadastrar" element={<Cadastrar />} /> */}
-        <Route path="*" element={<NotFound />} /> 
+        <Route path="/entrar" element={<Cadastro />} />
+        {/* <Route path="/cadastrar" element={<Cadastrar />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
