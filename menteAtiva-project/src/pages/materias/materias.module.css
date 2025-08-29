@@ -7,14 +7,58 @@ html, body, #root {
   box-sizing: border-box;
 }
 
+/* Fundo Ondas */
+.fundoOndas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.wave {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  height: 800px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 100%;
+  animation: onda 10s linear infinite alternate;
+}
+
+.wave:nth-child(2) {
+  bottom: -70px;
+  animation-duration: 16s;
+  opacity: 0.5;
+}
+
+/* Animação das ondas */
+@keyframes onda {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Animação do gradiente */
+@keyframes moverFundo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* ================= CONTAINER ================= */
 .container {
-  background: linear-gradient(135deg, #0f2647, #1c3879);
+  background: linear-gradient(270deg, #0f2647, #1c3879, #0f2647);
+  background-size: 600% 600%;
+  animation: moverFundo 30s ease infinite;
   color: var(--branco);
   min-height: 100vh;
   width: 100%;
   font-family: var(--fonte);
   overflow-x: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 /* ================= NAVBAR ================= */
@@ -114,7 +158,7 @@ html, body, #root {
 /* ================= HERO ================= */
 .hero {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   gap: 60px;
   flex-wrap: wrap;
@@ -123,6 +167,7 @@ html, body, #root {
 
 .texto {
   max-width: 520px;
+  text-align: center;
 }
 
 .texto h1 {
