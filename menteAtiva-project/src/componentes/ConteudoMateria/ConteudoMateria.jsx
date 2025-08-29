@@ -1,5 +1,6 @@
-import { Calculator, Atom, BookOpen, MessageCircle } from "lucide-react";
+import { Calculator, Atom, BookOpen, MessageCircle} from "lucide-react";
 import style from "./ConteudoMateria.module.css"
+import { NavLink } from "react-router-dom";
 
 const ConteudoMateria = (props) => {
     const { children } = props;
@@ -16,24 +17,24 @@ const ConteudoMateria = (props) => {
       <nav className={style.navbar}>
         <ul>
           <li>
-            <a href="./Matematica">
+            <NavLink to="/materias/matematica">
               <Calculator size={18} /> Matemática
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#">
+            <NavLink to="/materias/cienciasNatureza">
               <Atom size={18} /> Ciências da Natureza
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#">
+           <NavLink to="/materias/cienciasHumanas">
               <BookOpen size={18} /> Ciências Humanas e Sociais
-            </a>
+            </NavLink>
           </li>
           <li className={style.dropdown}>
-            <a href="#">
+           <NavLink to="/materias/linguagens">
               <MessageCircle size={18} /> Linguagens
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
