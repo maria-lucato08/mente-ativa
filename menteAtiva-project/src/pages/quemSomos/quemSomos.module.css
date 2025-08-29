@@ -1,77 +1,81 @@
 .QuemSomos {
+  background-color: var(--azulRoyal); /* azul parecido com o da imagem */
+  color: #ffffff;
+  padding: 4rem 2rem;
+  text-align: center;
   font-family: var(--fonte);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 120vh;
-  padding: 20px;
-  gap: 30px;
 }
 
 .osCriadores{
-    text-align: center;
+  text-align: justify;
+  padding-left: 25%;
 }
 
-/* Título e subtítulo */
 .osCriadores h2 {
-  font-size: 40px;
-  font-weight: 600;
-  margin: 20px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 .osCriadores p {
-  font-weight: 300;
-  color: #444;
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 4rem;
 }
 
 /* Carrossel */
 .carrosselConteudo {
-  align-items: center;
   display: flex;
-  gap: 1rem;
-  margin: 30px 0;
+  align-items: center;
+  justify-content: column;  
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  float:left;
+  padding-left: 25%;
 }
 
 .carrosselImg {
-  width: 400px;
-  height: 400px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0px 0px 15px 3px var(--azulEscuro);
+  border-radius: 50%; /* imagem redonda */
+  border: 4px solid #ffcc00; /* detalhe amarelo */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Botões */
 .carrosselBtn {
+  background: none;
   border: none;
-  padding: 0.5rem;
-  border-radius: 50%;
   cursor: pointer;
-  transition: background 0.2s ease;
-  display: flex;
-  justify-content: center;
-  background: transparent;
+  color: #ffcc00;
+  transition: transform 0.2s ease;
 }
 
 .carrosselBtn:hover {
-  background: #1a58b5;
-  color: white;
+  transform: scale(1.2);
 }
 
-/* Informações do criador */
+/* Informações do Criador */
 .info {
-  margin-top: 1.5rem;
-  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 50px;
 }
 
-.info h2 {
-  font-size: 35px;
+.pessoa {
+  margin-bottom: 2rem;
+}
+
+.pessoa h2 {
+  font-size: 1.5rem;
   font-weight: bold;
+  color: #ffcc00; /* títulos em amarelo */
+  margin-bottom: 0.5rem;
+  
 }
 
-.info p {
-  margin-top: 0.5rem;
-  color: #555;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+.pessoa p {
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 1.6;
 }
