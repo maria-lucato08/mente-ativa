@@ -5,7 +5,7 @@ import style from "./materias.module.css";
 
 const Materias = () => {
   return (
-   <div className={style.container}>
+   <div className={style.containerB}>
   {/* Fundo Ondas */}
   <div className={style.fundoOndas}>
     <div className={style.wave}></div>

@@ -1,9 +1,217 @@
-.container {
+.containerA {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
   font-family: var(--fonte);
-  color: #111;
+  color: var(--branco);
+}
+
+.containerB {
+  background: linear-gradient(270deg, #0f2647, #1c3879, #0f2647);
+  background-size: 600% 600%;
+  animation: moverFundo 30s ease infinite;
+  color: var(--branco);
+  min-height: 100vh;
+  width: 100%;
+  font-family: var(--fonte);
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* Fundo Ondas */
+.fundoOndas {
+  position: absolute;
+  width: 100%;
+  height: 22%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.wave {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  height:700px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 100%;
+  animation: onda 10s linear infinite alternate;
+}
+
+.wave:nth-child(2) {
+  bottom: -70px;
+  animation-duration: 16s;
+  opacity: 0.5;
+}
+
+/* Animação das ondas */
+@keyframes onda {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Animação do gradiente */
+@keyframes moverFundo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: var(--azulRoyal);
+  backdrop-filter: blur(10px);
+  padding: 20px 50px;
+  z-index: 1000;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--branco);
+  font-weight: 600;
+  font-size: 1.15rem;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  border-radius: 8px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.navbar a:hover {
+  background: #ffffff1a;
+  transform: scale(1.08);
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--amarelo), #ff402f);
+  transition: width 0.4s;
+  border-radius: 2px;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background: var(--preto);
+  padding: 14px;
+  border-radius: 10px;
+  top: 120%;
+  left: 0;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeSlide 0.3s ease forwards;
+  min-width: 160px;
+}
+
+.dropdown:hover .submenu {
+  display: flex;
+}
+
+.submenu li a {
+  color: var(--branco);
+  padding: 8px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.submenu li a:hover {
+  background: #ffffff1a;
+  color: var(--amarelo);
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= HERO ================= */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  padding: 80px 40px;
+  margin-bottom: 70px;
+}
+
+.textoH {
+  margin-top: 40px;
+  max-width: 520px;
+  text-align: center;
+}
+
+.textoH h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.textoH h1 span {
+  color: var(--amarelo);
+}
+
+.textoH p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin-bottom: 25px;
+}
+
+.cta {
+  background: linear-gradient(90deg, var(--amarelo), #ff402f);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  color: var(--preto);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  transform: scale(1.08);
+  box-shadow: 0px 4px 15px var(--preto);
+}
+
+.imagemH img {
+  max-width: 400px;
+  border-radius: 14px;
+  box-shadow: 0px 6px 18px var(--preto);
+  transition: transform 0.4s ease;
+}
+
+.imagemH img:hover {
+  transform: translateY(-12px) scale(1.07);
 }
 
 /* Objetivo */
@@ -11,26 +219,42 @@
   text-align: center;
   padding: 40px 30px;
   font-family: sans-serif;
-  background: linear-gradient(135deg, var(--azulEscuro), var(--azul));
+  background: var(--branco);
   border-radius: 20px;
-  box-shadow: 0 8px 20px var(--azul);
+  box-shadow: 0 8px 20px rgb(55, 118, 173);
   max-width: 1300px;
   height: 400px;
-  margin: 40px 0;
+  margin: 40px 0 70px 0;
+}
+
+.objetivo h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.objetivo p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.objetivo img {
+  width: 100%;
+  border-radius: 12px;
+  width: 200;
 }
 
 .titulo {
   font-size: 38px;
   font-weight: 800;
   margin-bottom: 20px;
-  color: var(--branco);
+  color: var(--azulEscuro);
 }
 
 .descricao {
   font-size: 18px;
   max-width: 800px;
   margin: 0 auto 40px;
-  color: var(--cinzaEsbranquicado);
+  color: var(--azulMaisEscuro);
   line-height: 1.6;
 }
 
@@ -79,31 +303,16 @@
   transform: rotate(10deg) scale(1.2);
 }
 
-.objetivo h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.objetivo p {
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.objetivo img {
-  width: 100%;
-  border-radius: 12px;
-  width: 200;
-}
-
 /* Vestibulares */
 .vestibularCard {
-  background: var(--cinza);
+  background: var(--branco);
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgb(55, 118, 173);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .vestibularCard h3 {
   font-size: 20px;
@@ -127,8 +336,9 @@
 .btn {
   display: inline-block;
   margin-top: 20px;
+  margin-bottom: 70px;
   padding: 12px 20px;
-  background: linear-gradient(135deg, var(--azulEscuro), var(--azul));
+  background: linear-gradient(135deg, rgb(2, 54, 128), var(--azul));
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -143,7 +353,7 @@
 }
 
 .btn:hover {
-  background: linear-gradient(135deg, var(--azul), var(--azulEscuro));
+  background: linear-gradient(135deg, var(--azul), rgb(2, 54, 128));
   transform: scale(1.05);
 }
 
@@ -153,7 +363,7 @@
 }
 
 .comentarios h2 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .cards {
@@ -168,7 +378,8 @@
   padding: 20px;
   border: 1px solid var(--branco);
   border-radius: 12px;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 20px rgb(55, 118, 173);
+  color: var(--preto);
 }
 
 .card h4 {

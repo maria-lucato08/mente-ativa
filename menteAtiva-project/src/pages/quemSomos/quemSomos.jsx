@@ -4,7 +4,9 @@ import { useState } from "react";
 import style from "./quemSomos.module.css";
 
 const quemSomos = [
-  { nome: "Maria Elis", descricao: "descrição futura", imagem: "./assets/fotoMaria.jpg  " },
+  { nome: "Maria Elis", 
+  descricao: "descrição futura",
+  imagem: "./assets/fotoMaria.jpg  " },
   {
     nome: "Guilherme Vieira",
     descricao: "descrição futura",
@@ -15,7 +17,9 @@ const quemSomos = [
     descricao: "descrição futura",
     imagem: "./assets/fotoTeste.png",
   },
-  { nome: "Maxwell", descricao: "descrição futura", imagem: "./assets/fotoMaxwell.jpg" },
+  { nome: "Maxwell", 
+  descricao: "descrição futura", 
+  imagem: "./assets/fotoMaxwell.jpg" },
 ];
 const QuemSomos = () => {
   const [indice, setIndice] = useState(0);
@@ -52,21 +56,15 @@ const QuemSomos = () => {
             alt={criadorAtual.nome}
             className={style.carrosselImg}
           />
-
-          <button
-            className={style.carrosselBtn}
-            onClick={() => mudarCriador(1)}
-          >
-            <ChevronRight size={24} />
-          </button>
-          </div>
         </div>
+          
+        
 
         {/* Texto do Criador */}
         <div className={style.info}>
         <div className={style.pessoa}>
           <h2>{criadorAtual.nome}</h2>
-          <p>{criadorAtual.descricao}</p>
+          {/* <p>{criadorAtual.descricao}</p> */}
         </div>
          {/* Tragetória do Criador */}
         <div className={style.pessoa}>
@@ -75,6 +73,15 @@ const QuemSomos = () => {
         </div>
         </div>
       </div>
+      
+      <div className={style.carrosselConteudo}>
+          <button
+            className={style.carrosselBtn}
+            onClick={() => mudarCriador(1)}
+          >
+            <ChevronRight size={24} />
+          </button>
+      </div></div>
   );
 };
 
