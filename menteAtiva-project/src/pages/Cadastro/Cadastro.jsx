@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Botao } from "../../componentes";
+import { act, useState } from "react";
 import style from "./Cadastro.module.css";
 
 const Cadastro = () => {
@@ -13,76 +12,57 @@ const Cadastro = () => {
   };
 
   return (
-    <div className={style.authContainer}>
-      <div className={style.card}>
-        {/* Tabs */}
-        <div className={style.tabsList}>
-          <Botao
-            className={`${style.tabButton} ${
-              activeTab === "login" ? style.active : ""
-            }`}
-            onClick={() => setActiveTab("login")}
-          >
+    <div className={style.Cadastro}>
+
+        <div>
+
+          <button className={style.actions} onClick={() => setActiveTab("login")}>
             Login
-          </Botao>
-          <Botao
-            className={`${style.tabButton} ${
-              activeTab === "signup" ? style.active : ""
-            }`}
-            onClick={() => setActiveTab("signup")}
-          >
+          </button>
+
+          <button className={style.actions} onClick={() => setActiveTab("cadastro")}>
             Cadastro
-          </Botao>
+          </button>
+
+          <div>
+
+
+          {activeTab === "login" ?(
+            <form>
+
+            <input type="email" placeholder="Email" required /> 
+            <input type="password" placeholder="Senha" required />
+             
+              <div> 
+                <button>Entrar</button>
+                <button onClick={()=> setActiveTab("resetarSenha")}>Esqueceu a senha?</button>
+              </div>
+
+            </form>)
+
+          :activeTab === "cadastro"?(        
+          <form onSubmit={handleSubmit}>
+
+            <input type="text" placeholder="Nome" required />
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Senha" required />
+            <input type="password" placeholder="Confirme a senha" required />
+
+            <button>Cadastrar</button>
+
+          </form>)
+          :activeTab === "resetarSenha"?(
+          <form onSubmit={handleSubmit}>
+
+            <input type="email" placeholder="Email" required />
+
+            <button>Enviar link de recuperação</button>
+
+          </form>
+          ):null}          
+          </div>
         </div>
 
-        {/* LOGIN */}
-        {activeTab === "login" && (
-          <form onSubmit={handleSubmit} className={style.form}>
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              className={style.input}
-            />
-            <input
-              type="password"
-              placeholder="Senha"
-              required
-              className={style.input}
-            />
-            <button type="submit" disabled={loading} className={style.button}>
-              {loading ? "Entrando..." : "Entrar"}
-            </button>
-          </form>
-        )}
-
-        {/* CADASTRO */}
-        {activeTab === "signup" && (
-          <form onSubmit={handleSubmit} className={style.form}>
-            <input
-              type="text"
-              placeholder="Nome"
-              required
-              className={style.input}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              className={style.input}
-            />
-            <input
-              type="password"
-              placeholder="Senha"
-              required
-              className={style.input}
-            />
-            <button type="submit" disabled={loading} className={style.button}>
-              {loading ? "Cadastrando..." : "Cadastrar"}
-            </button>
-          </form>
-        )}
-      </div>
     </div>
   );
 };
