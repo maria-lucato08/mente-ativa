@@ -5,9 +5,9 @@ const Introducao = () => {
     <section className={style.hero}>
       <div className={style.texto}>
         <h1>
-          Vestibular não é <span>sorte</span>, é <span>preparo!</span>
+          Aqui você enconotrará <span>todas</span> as matérias e <span>assuntos!</span>
         </h1>
-        <p>Estamos aqui para te ajudar a conquistar seus sonhos acadêmicos</p>
+        <p>Melhores </p>
         <button className={style.cta}>Começar Agora</button>
       </div>
     </section>

@@ -1,6 +1,4 @@
-import { Calculator, Atom, BookOpen, MessageCircle } from "lucide-react";
-import Particles from "react-tsparticles";
-
+import { NavLink } from "react-router-dom";
 import style from "./inicial.module.css";
 
 const Inicial = () => {
@@ -12,37 +10,11 @@ const Inicial = () => {
 
   return (
     <div className={style.containerB}>
-        {/* Fundo Ondas */}
-        <div className={style.fundoOndas}>
-          <div className={style.wave}></div>
-          <div className={style.wave}></div>
-        </div> 
-
-      {/* Navbar */}
-      <nav className={style.navbar}>
-        <ul>
-          <li>
-            <a href="#">
-              <Calculator size={18} /> Matemática
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <Atom size={18} /> Ciências da Natureza
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <BookOpen size={18} /> Ciências Humanas e Sociais
-            </a>
-          </li>
-          <li className={style.dropdown}>
-            <a href="#">
-              <MessageCircle size={18} /> Linguagens
-            </a>
-          </li>
-        </ul>
-      </nav>
+      {/* Fundo Ondas */}
+      <div className={style.fundoOndas}>
+        <div className={style.wave}></div>
+        <div className={style.wave}></div>
+      </div>
 
       {/* Hero */}
       <section className={style.hero}>
@@ -51,10 +23,9 @@ const Inicial = () => {
             Vestibular não é <span>sorte</span>, é <span>preparo!</span>
           </h1>
           <p>Estamos aqui para te ajudar a conquistar seus sonhos acadêmicos</p>
-          <button className={style.cta}>Começar Agora</button>
-        </div>
-        <div className={style.imagemH}>
-          {/* <img src="..." alt="Estudantes" /> */}
+          <button className={style.cta}>
+            <NavLink to="/materias">Começar Agora</NavLink>
+          </button>
         </div>
       </section>
 
@@ -90,7 +61,8 @@ const Inicial = () => {
               </p>
             </div>
           </div>
-        </section><br />
+        </section>
+        <br />
 
         {/* Vestibulares */}
         <section className={style.vestibulares}>
@@ -100,8 +72,8 @@ const Inicial = () => {
               <div className={style.vestibularCard}>
                 <h3>📝 Enem</h3>
                 <p>
-                  Já pensou em garantir a sua vaga em uma boa universidade? O ENEM
-                  pode ser o seu passaporte! Aqui, você encontra dicas e
+                  Já pensou em garantir a sua vaga em uma boa universidade? O
+                  ENEM pode ser o seu passaporte! Aqui, você encontra dicas e
                   estratégias para mandar bem na prova.
                 </p>
               </div>
@@ -109,9 +81,10 @@ const Inicial = () => {
               <div className={style.vestibularCard}>
                 <h3>🎓 Fuvest</h3>
                 <p>
-                  A Fuvest é um dos vestibulares mais concorridos do Brasil. Vamos
-                  juntos descomplicar os conteúdos, compartilhar macetes e trazer
-                  histórias inspiradoras de quem já passou por esse desafio.
+                  A Fuvest é um dos vestibulares mais concorridos do Brasil.
+                  Vamos juntos descomplicar os conteúdos, compartilhar macetes e
+                  trazer histórias inspiradoras de quem já passou por esse
+                  desafio.
                 </p>
               </div>
 
