@@ -13,7 +13,7 @@ const Cabecalho = () => {
           <NavLink to="/quem-somos">Quem Somos</NavLink>
           <NavLink to="/sobre">Sobre</NavLink>
         </div>
-        <Botao texto="Entrar" />
+        <NavLink to="/entrar"><Botao texto="Entrar"/></NavLink>
         <Botao texto="Criar conta" tipo={TIPO_BOTAO.SECUNDARIO}/>
       </nav>
     </header>
