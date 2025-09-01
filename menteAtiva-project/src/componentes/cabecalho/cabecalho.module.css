@@ -30,10 +30,6 @@
   transition: color 0.3s ease;
 }
 
-.cabecalho nav a:hover {
-  color: var(--amarelo);
-}
-
 /* Botões */
 .cabecalho button {
   font-size: 14px;
@@ -52,16 +48,7 @@
 }
 
 .cabecalho button:first-of-type:hover {
-  background-color: #223a63;
+  background-color: #2b4a80;
 }
 
-/* Botão secundário (Criar conta) */
-.cabecalho button:last-of-type {
-  background-color: var(--amarelo); /* amarelo dourado */
-  color: var(--preto);
-  border: none;
-}
 
-.cabecalho button:last-of-type:hover {
-  background-color: #ce9f11;
-}

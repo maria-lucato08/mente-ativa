@@ -2,7 +2,7 @@ import { Routes, Route, Navigate} from "react-router-dom";
 
 import { LayoutMateria, LayoutPadrao } from "./layouts";
 
-import { Inicial, NotFound, QuemSomos, Sobre, Cadastro, Introducao, Matematica, CienciasHumanas, CienciasNatureza, Linguagens} from "./pages";
+import { Inicial, NotFound, QuemSomos, Sobre, Login, Introducao, Matematica, CienciasHumanas, CienciasNatureza, Linguagens} from "./pages";
 
 const Router = () => {
   return (
@@ -18,11 +18,9 @@ const Router = () => {
           <Route path="cienciasNatureza" element={<CienciasNatureza />} />
           <Route path="linguagens" element={<Linguagens />} />
         </Route>
-
         <Route path="/quem-somos" element={<QuemSomos />} />
         <Route path="/sobre" element={<Sobre />} />
-        <Route path="/entrar" element={<Cadastro />} />
-        {/* <Route path="/cadastrar" element={<Cadastrar />} /> */}
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

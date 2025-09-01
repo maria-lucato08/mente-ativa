@@ -1,9 +1,9 @@
-import { act, useState } from "react";
-import style from "./Cadastro.module.css";
+import { useState } from "react";
+import style from "./Login.module.css";
 
-const Cadastro = () => {
+const Login = () => {
   const [activeTab, setActiveTab] = useState("login");
-  const [loading, setLoading] = useState(false);
+  const [setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,4 +67,4 @@ const Cadastro = () => {
   );
 };
 
-export { Cadastro };
+export { Login };
