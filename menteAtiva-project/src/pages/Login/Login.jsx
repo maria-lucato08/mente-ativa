@@ -12,47 +12,46 @@ const Login = () => {
    await api.post("/login", {
     name: inputName.current.value,
     email: inputEmail.current.value,
-    inputPassword: inputPassword.current.value,
+    password: inputPassword.current.value,
    })
   };
 
-  const [activeTab, setActiveTab] = useState("login");
-  const [setLoading] = useState(false);
+  const [qualAba, setqualAba] = useState("login");
+  const [carregamento, setCarregamento] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => setLoading(false), 2000); // simula requisição
+    setCarregamento(true);
   };
 
   return (
     <div className={style.Cadastro}>
       <div>
-        <button className={style.actions} onClick={() => setActiveTab("login")}>
+        <button className={style.actions} onClick={() => setqualAba("login")}>
           Login
         </button>
 
         <button
           className={style.actions}
-          onClick={() => setActiveTab("cadastro")}
+          onClick={() => setqualAba("cadastro")}
         >
           Cadastro
         </button>
 
         <div>
-          {activeTab === "login" ? (
+          {qualAba === "login" ? (
             <form>
               <input type="email" placeholder="Email" required />
               <input type="password" placeholder="Senha" required />
 
               <div>
                 <button>Entrar</button>
-                <button onClick={() => setActiveTab("resetarSenha")}>
+                <button onClick={() => setqualAba("resetarSenha")}>
                   Esqueceu a senha?
                 </button>
               </div>
             </form>
-          ) : activeTab === "cadastro" ? (
+          ) : qualAba === "cadastro" ? (
             <form onSubmit={handleSubmit}>
               <input type="text" placeholder="Nome" required ref={inputName} />
               <input
@@ -73,9 +72,9 @@ const Login = () => {
                 required
                 ref={inputConfirmPassword}
               />
-              <button type="button" onClick={createUsers}>Cadastrar</button>
+              <button type="submit" onClick={createUsers}>Cadastrar</button>
             </form>
-          ) : activeTab === "resetarSenha" ? (
+          ) : qualAba === "resetarSenha" ? (
             <form onSubmit={handleSubmit}>
               <input type="email" placeholder="Email" required />
 
