@@ -8,21 +8,37 @@ const Login = () => {
   const inputPassword = useRef();
   const inputConfirmPassword = useRef();
 
-  async function createUsers(){
-   await api.post("/login", {
-    name: inputName.current.value,
-    email: inputEmail.current.value,
-    password: inputPassword.current.value,
-   })
-  };
+  async function createUsers(e) {
+    e.preventDefault();
+
+    try {
+      await api.post("/cadastro", {
+        name: inputName.current.value,
+        email: inputEmail.current.value,
+        password: inputPassword.current.value,
+      });
+      alert("Usuário cadastrado com sucesso!");
+    } catch (err) {
+      alert("Erro ao cadastrar: " + err.response?.data?.message || err.message);
+    }
+  }
+
+  async function loginUsers(e) {
+    e.preventDefault();
+
+    try {
+      const response = await api.post("/login", {
+        email: inputEmail.current.value,
+        password: inputPassword.current.value,
+      });
+      alert("Login realizado!");
+      localStorage.setItem("token", response.data.token);
+    } catch (err) {
+      alert("Erro no login: " + err.response?.data?.message || err.message);
+    }
+  }
 
   const [qualAba, setqualAba] = useState("login");
-  const [carregamento, setCarregamento] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setCarregamento(true);
-  };
 
   return (
     <div className={style.Cadastro}>
@@ -40,19 +56,19 @@ const Login = () => {
 
         <div>
           {qualAba === "login" ? (
-            <form>
-              <input type="email" placeholder="Email" required />
-              <input type="password" placeholder="Senha" required />
+            <form onSubmit={loginUsers}>
+              <input type="email" placeholder="Email" required ref={inputEmail}/>
+              <input type="password" placeholder="Senha" required ref={inputPassword}/>
 
               <div>
-                <button>Entrar</button>
-                <button onClick={() => setqualAba("resetarSenha")}>
+                <button type="submit">Entrar</button>
+                <button type="button" onClick={() => setqualAba("resetarSenha")}>
                   Esqueceu a senha?
                 </button>
               </div>
             </form>
           ) : qualAba === "cadastro" ? (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={createUsers}>
               <input type="text" placeholder="Nome" required ref={inputName} />
               <input
                 type="email"
@@ -72,12 +88,13 @@ const Login = () => {
                 required
                 ref={inputConfirmPassword}
               />
-              <button type="submit" onClick={createUsers}>Cadastrar</button>
+              <button type="submit">
+                Cadastrar
+              </button>
             </form>
           ) : qualAba === "resetarSenha" ? (
-            <form onSubmit={handleSubmit}>
+            <form>
               <input type="email" placeholder="Email" required />
-
               <button>Enviar link de recuperação</button>
             </form>
           ) : null}
