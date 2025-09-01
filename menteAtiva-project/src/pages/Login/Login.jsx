@@ -1,7 +1,12 @@
 import { useState } from "react";
 import style from "./Login.module.css";
+import { api } from "../../services";
 
 const Login = () => {
+  
+
+
+
   const [activeTab, setActiveTab] = useState("login");
   const [setLoading] = useState(false);
 
@@ -13,56 +18,48 @@ const Login = () => {
 
   return (
     <div className={style.Cadastro}>
+      <div>
+        <button className={style.actions} onClick={() => setActiveTab("login")}>
+          Login
+        </button>
+
+        <button
+          className={style.actions}
+          onClick={() => setActiveTab("cadastro")}
+        >
+          Cadastro
+        </button>
 
         <div>
-
-          <button className={style.actions} onClick={() => setActiveTab("login")}>
-            Login
-          </button>
-
-          <button className={style.actions} onClick={() => setActiveTab("cadastro")}>
-            Cadastro
-          </button>
-
-          <div>
-
-
-          {activeTab === "login" ?(
+          {activeTab === "login" ? (
             <form>
+              <input type="email" placeholder="Email" required />
+              <input type="password" placeholder="Senha" required />
 
-            <input type="email" placeholder="Email" required /> 
-            <input type="password" placeholder="Senha" required />
-             
-              <div> 
+              <div>
                 <button>Entrar</button>
-                <button onClick={()=> setActiveTab("resetarSenha")}>Esqueceu a senha?</button>
+                <button onClick={() => setActiveTab("resetarSenha")}>
+                  Esqueceu a senha?
+                </button>
               </div>
+            </form>
+          ) : activeTab === "cadastro" ? (
+            <form onSubmit={handleSubmit}>
+              <input type="text" placeholder="Nome" required />
+              <input type="email" placeholder="Email" required />
+              <input type="password" placeholder="Senha" required />
+              <input type="password" placeholder="Confirme a senha" required />
+              <button type="button ">Cadastrar</button>
+            </form>
+          ) : activeTab === "resetarSenha" ? (
+            <form onSubmit={handleSubmit}>
+              <input type="email" placeholder="Email" required />
 
-            </form>)
-
-          :activeTab === "cadastro"?(        
-          <form onSubmit={handleSubmit}>
-
-            <input type="text" placeholder="Nome" required />
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Senha" required />
-            <input type="password" placeholder="Confirme a senha" required />
-
-            <button>Cadastrar</button>
-
-          </form>)
-          :activeTab === "resetarSenha"?(
-          <form onSubmit={handleSubmit}>
-
-            <input type="email" placeholder="Email" required />
-
-            <button>Enviar link de recuperação</button>
-
-          </form>
-          ):null}          
-          </div>
+              <button>Enviar link de recuperação</button>
+            </form>
+          ) : null}
         </div>
-
+      </div>
     </div>
   );
 };

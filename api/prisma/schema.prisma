@@ -18,4 +18,5 @@ model CadastroUsers {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
   email   String   @unique
   name    String
+  password String
 }

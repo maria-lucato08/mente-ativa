@@ -11,7 +11,15 @@ app.get("/cadastro", async (req, res) => {
   res.status(200).json(usersCadastrados);
 });
 
-app.post("/cadastro", async (req, res) => {
+app.post("/login", async (req, res) => {
+  try {
+    // const { email, name, password, confirmPassword } = req.body;
+    // if( password !== confirmPassword){
+    //   return res.status(400).send("As senhas nao conhecidem");
+    // }
+
+    // const hashedPassword = await bcrypt.hash(password, 10);
+    
   await prisma.CadastroUsers.create({
     data: {
       email: req.body.email,
