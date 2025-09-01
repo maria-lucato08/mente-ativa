@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Botao, TIPO_BOTAO } from "../Botao";
-
-import style from "./cabecalho.module.css";
+import style from "./Cabecalho.module.css";
 
 const Cabecalho = () => {
   return (

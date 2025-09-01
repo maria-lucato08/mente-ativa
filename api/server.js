@@ -13,20 +13,20 @@ app.use(cors());
 
 function authMiddleware(req, res, next) {
   const token = req.headers["authorization"];
-  if (!token) return res.status(401).json({ message: "Token não encontrado" });
+  if (!token) return res.status(401).send({ message: "Token não encontrado" });
 
   try {
     const decoded = jwt.verify(token.split(" ")[1], SECRET);
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(401).json({ message: "Token inválido" });
+    return res.status(401).send({ message: "Token inválido" });
   }
 }
 
-app.get("/users",authMiddleware, async (req, res) => {
+app.get("/cadastro",authMiddleware, async (req, res) => {
   const users = await prisma.cadastroUsers.findMany();
-  res.status(200).json(users);
+  res.status(200).send(users);
 });
 
 app.post("/cadastro", async (req, res) => {
@@ -52,22 +52,22 @@ app.post("/login", async (req, res) => {
     });
 
     if (!user) {
-      return res.status(400).json({ message: "Usuário não encontrado" });
+      return res.status(400).send({ message: "Usuário não encontrado" });
     }
     const validacaoPassword = await bcrypt.compare(
       req.body.password,
       user.password
     );
     if (!validacaoPassword) {
-      return res.status(400).json({ message: "Senha incorreta" });
+      return res.status(400).send({ message: "Senha incorreta" });
     }
     const token = jwt.sign({ id: user.id, email: user.email }, SECRET, {
       expiresIn: "1h",
     });
 
-    res.status(200).json({ message: "Login realizado com sucesso", token });
+    res.status(200).send({ message: "Login realizado com sucesso", token });
   } catch (err) {
-    res.status(500).json({ message: "Erro no login", error: err.message });
+    res.status(500).send({ message: "Erro no login", error: err.message });
   }
 });
 
@@ -101,4 +101,4 @@ app.delete("/cadastro/:id", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Servidor rodando na porta 3000!"));
+app.listen(3000, "0.0.0.0", () => console.log("Servidor rodando na porta 3000!"));

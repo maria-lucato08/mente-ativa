@@ -22,6 +22,9 @@
   justify-content: center; /* centraliza os links no meio */
 }
 
+.cabecalho nav a:hover {
+  color: var(--amarelo);
+}
 .cabecalho nav a {
   text-decoration: none;
   font-size: 22px;
