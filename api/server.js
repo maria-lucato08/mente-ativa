@@ -1,29 +1,24 @@
 import express from "express";
+import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-app.get("/cadastro", async (req, res) => {
+app.get("/login", async (req, res) => {
   const usersCadastrados = await prisma.CadastroUsers.findMany();
   res.status(200).json(usersCadastrados);
 });
 
-app.post("/login", async (req, res) => {
-  try {
-    // const { email, name, password, confirmPassword } = req.body;
-    // if( password !== confirmPassword){
-    //   return res.status(400).send("As senhas nao conhecidem");
-    // }
-
-    // const hashedPassword = await bcrypt.hash(password, 10);
-    
+app.post("/login", async (req, res) => {    
   await prisma.CadastroUsers.create({
     data: {
       email: req.body.email,
       name: req.body.name,
+      password: req.body.password
     },
   });
   res.status(201).send("Usuário cadastrado");

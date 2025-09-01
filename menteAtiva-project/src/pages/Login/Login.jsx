@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import style from "./Login.module.css";
 import { api } from "../../services";
 
 const Login = () => {
-  
+  const inputName = useRef();
+  const inputEmail = useRef();
+  const inputPassword = useRef();
+  const inputConfirmPassword = useRef();
 
-
+  async function createUsers(){
+   await api.post("/login", {
+    name: inputName.current.value,
+    email: inputEmail.current.value,
+    inputPassword: inputPassword.current.value,
+   })
+  };
 
   const [activeTab, setActiveTab] = useState("login");
   const [setLoading] = useState(false);
@@ -45,11 +54,26 @@ const Login = () => {
             </form>
           ) : activeTab === "cadastro" ? (
             <form onSubmit={handleSubmit}>
-              <input type="text" placeholder="Nome" required />
-              <input type="email" placeholder="Email" required />
-              <input type="password" placeholder="Senha" required />
-              <input type="password" placeholder="Confirme a senha" required />
-              <button type="button ">Cadastrar</button>
+              <input type="text" placeholder="Nome" required ref={inputName} />
+              <input
+                type="email"
+                placeholder="Email"
+                required
+                ref={inputEmail}
+              />
+              <input
+                type="password"
+                placeholder="Senha"
+                required
+                ref={inputPassword}
+              />
+              <input
+                type="password"
+                placeholder="Confirme a senha"
+                required
+                ref={inputConfirmPassword}
+              />
+              <button type="button" onClick={createUsers}>Cadastrar</button>
             </form>
           ) : activeTab === "resetarSenha" ? (
             <form onSubmit={handleSubmit}>
