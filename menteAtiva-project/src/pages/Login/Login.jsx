@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
 import { api } from "../../services";
 
@@ -7,17 +8,31 @@ const Login = () => {
   const inputEmail = useRef();
   const inputPassword = useRef();
   const inputConfirmPassword = useRef();
+  
+  const navigate = useNavigate();
 
   async function createUsers(e) {
     e.preventDefault();
+
+    const password = inputPassword.current.value;
+    const confirmPassword = inputConfirmPassword.current.value;
+
+    if (confirmPassword !== password) {
+      alert("As senhas não coincidem");
+      return;
+    }
 
     try {
       await api.post("/cadastro", {
         name: inputName.current.value,
         email: inputEmail.current.value,
-        password: inputPassword.current.value,
+        password: password,
       });
       alert("Usuário cadastrado com sucesso!");
+      inputName.current.value = "";
+      inputEmail.current.value = "";
+      inputPassword.current.value = "";
+      inputConfirmPassword.current.value = "";
     } catch (err) {
       alert("Erro ao cadastrar: " + err.response?.data?.message || err.message);
     }
@@ -26,13 +41,15 @@ const Login = () => {
   async function loginUsers(e) {
     e.preventDefault();
 
+
     try {
       const response = await api.post("/login", {
         email: inputEmail.current.value,
         password: inputPassword.current.value,
       });
-      alert("Login realizado!");
       localStorage.setItem("token", response.data.token);
+
+      navigate("/");
     } catch (err) {
       alert("Erro no login: " + err.response?.data?.message || err.message);
     }
@@ -57,12 +74,25 @@ const Login = () => {
         <div>
           {qualAba === "login" ? (
             <form onSubmit={loginUsers}>
-              <input type="email" placeholder="Email" required ref={inputEmail}/>
-              <input type="password" placeholder="Senha" required ref={inputPassword}/>
+              <input
+                type="email"
+                placeholder="Email"
+                required
+                ref={inputEmail}
+              />
+              <input
+                type="password"
+                placeholder="Senha"
+                required
+                ref={inputPassword}
+              />
 
               <div>
                 <button type="submit">Entrar</button>
-                <button type="button" onClick={() => setqualAba("resetarSenha")}>
+                <button
+                  type="button"
+                  onClick={() => setqualAba("resetarSenha")}
+                >
                   Esqueceu a senha?
                 </button>
               </div>
@@ -88,9 +118,7 @@ const Login = () => {
                 required
                 ref={inputConfirmPassword}
               />
-              <button type="submit">
-                Cadastrar
-              </button>
+              <button type="submit">Cadastrar</button>
             </form>
           ) : qualAba === "resetarSenha" ? (
             <form>

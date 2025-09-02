@@ -10,6 +10,9 @@ const Introducao = () => {
         <p>Melhores </p>
         <button className={style.cta}>Começar Agora</button>
       </div>
+      <div className={style.img}>
+        <img src="../assets/imgMaterias.png"></img>
+      </div>
     </section>
   );
 };
