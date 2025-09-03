@@ -44,29 +44,31 @@
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 20px rgb(55, 118, 173);
+  box-shadow: 0cap 2px 15px #3578d6;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 
 .vestibularCard h3 {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--azulEscuro);
-  margin-bottom: 4px;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--azulMaisEscuro);
 }
 
 .vestibularCard h4{
+  padding: 10px;
   font-size: 15px;
   font-weight: bold;
-  color: var(--preto);
+  color: #1e3a8a;
   margin-bottom: 10px;
 }
 
 .vestibularCard p {
+  font-weight: 500;
   font-size: 15px;
   text-align: justify;
-  color: var(--preto);
+  color: var(--azulEscuro);
 }
 
 .vestibularCard:hover {
