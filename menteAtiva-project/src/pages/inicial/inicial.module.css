@@ -134,8 +134,8 @@
 }
 
 .cta {
-   position: relative; /* ou absolute/fixed se necessário */
-  z-index: 10;        /* qualquer número maior que o fundo */
+  position: relative;
+  z-index: 10;      
   background: linear-gradient(90deg, var(--amarelo), #ff402f);
   cursor: pointer;
   border: none;
