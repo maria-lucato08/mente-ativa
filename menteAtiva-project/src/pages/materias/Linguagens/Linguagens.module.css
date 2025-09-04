@@ -11,7 +11,7 @@
   width: 100%;
   position: relative;
   text-align: center;
-  color: #ffcc00;
+  color: var(--amarelo);
 }
 
 .vestibulares{
@@ -38,7 +38,7 @@
   flex-direction: column;
   justify-content: space-between;
   background: var(--branco);
-  height: 350px;
+  height: 150px;
   width: 300px;
   text-align: center;
   padding: 20px;
@@ -49,7 +49,7 @@
 }
 
 
-.vestibularCard h3 {
+.vestibularCard h2 {
   padding: 10px;
   font-size: 25px;
   font-weight: 600;
