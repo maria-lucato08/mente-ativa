@@ -1,5 +1,5 @@
 .QuemSomos {
-  background-color: var(--azulRoyal); /* azul parecido com o da imagem */
+ background: linear-gradient(150deg,rgb(17, 35, 53), var(--azulEscuro)50%, #244d99 100%);
   color: var(--branco);
   padding: 5rem;
   text-align: center;

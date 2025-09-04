@@ -30,13 +30,32 @@ import {
   
   Linguagens,
   Portugues,
+
   Ingles,
+  EscutaOralidade,
+  LeituraEscrita,
+  AnaliseLinguistica,
+  
   EdFisica,
+  BrincadeirasJogos,
+  Esportes,
+  Ginastica,
+  Danca,
+  Luta,
+  CorporaisAventura,
+  MovimentoSaude,
 
   Arte,
   CulturaSociedade,
   LinguagemCriacao,
   TecnicasPatrimonio,
+  OralidadeComunicacao,
+  InterpretacaoLeitura,
+  Redacao,
+  Literatura,
+  Gramatica,
+  TextosMidiaticos,
+  CriticaArgumentacao,
   
 } from "./pages";
 
@@ -70,8 +89,29 @@ const Router = () => {
 
           <Route path="linguagens" element={<Linguagens />} />
           <Route path="linguagens/portugues" element={<Portugues />} />
+          <Route path="linguagens/portugues/oralidade-comunicacao" element={<OralidadeComunicacao />} />
+          <Route path="linguagens/portugues/interpretacao-leitura" element={<InterpretacaoLeitura />} />
+          <Route path="linguagens/portugues/redacao" element={<Redacao />} />
+          <Route path="linguagens/portugues/literatura" element={<Literatura />} />
+          <Route path="linguagens/portugues/gramatica-analise" element={<Gramatica />} />
+          <Route path="linguagens/portugues/textoMidiaticos" element={<TextosMidiaticos />} />
+          <Route path="linguagens/portugues/critica-argumentacao" element={<CriticaArgumentacao />} />
+
+
           <Route path="linguagens/ingles" element={<Ingles />} />
+          <Route path="linguagens/ingles/escuta-oralidade" element={<EscutaOralidade />} />
+          <Route path="linguagens/ingles/leitura-escrita" element={<LeituraEscrita />} />
+          <Route path="linguagens/ingles/analiseLinguistica" element={<AnaliseLinguistica />} />
+
           <Route path="linguagens/edFisica" element={<EdFisica />} />
+          <Route path="linguagens/edFisica/brincadeirasJogos" element={<BrincadeirasJogos />} />
+          <Route path="linguagens/edFisica/esportes" element={<Esportes />} />
+          <Route path="linguagens/edFisica/danca" element={<Danca />} />
+          <Route path="linguagens/edFisica/gisnastica" element={<Ginastica />} />
+          <Route path="linguagens/edFisica/luta" element={<Luta />} />
+          <Route path="linguagens/edFisica/praticasCorporais-aventura" element={<CorporaisAventura />} />
+          <Route path="linguagens/edFisica/corpo-movimento-saude" element={<MovimentoSaude />} />
+
           <Route path="linguagens/arte" element={<Arte />} />
           <Route path="linguagens/arte/linguagemCracao" element={<LinguagemCriacao />} />
           <Route path="linguagens/arte/tecnicasPatrimonio" element={<TecnicasPatrimonio />} />
