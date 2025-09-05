@@ -19,14 +19,26 @@ import {
 
   CienciasHumanas,
   Historia,
+  EstudoHistoria,
+
   Filosofia,
+  Estudofilosofia,
+  
   Geografia,
+  EstudoGeografia,
+  
   Sociologia,
+  EstudoSociologia,
 
   CienciasNatureza,
   Fisica,
+  EstudoFisica,
+
   Quimica,
+  EstudoQuimica,
+
   Biologia,
+  EstudoBiologia,
   
   Linguagens,
   Portugues,
@@ -78,14 +90,26 @@ const Router = () => {
 
           <Route path="cienciasHumanas" element={<CienciasHumanas />} />
           <Route path="cienciasHumanas/historia" element={<Historia />} />
+          <Route path="cienciasHumanas/historia/:id" element={<EstudoHistoria />} />
+
           <Route path="cienciasHumanas/filosofia" element={<Filosofia />} />
+          <Route path="cienciasHumanas/filosofia/:id" element={<Estudofilosofia />} />
+
           <Route path="cienciasHumanas/geografia" element={<Geografia />} />
+          <Route path="cienciasHumanas/geografia/:id" element={<EstudoGeografia />} />
+
           <Route path="cienciasHumanas/sociologia" element={<Sociologia />} />
+          <Route path="cienciasHumanas/sociologia/:id" element={<EstudoSociologia />} />
 
           <Route path="cienciasNatureza" element={<CienciasNatureza />} />
           <Route path="cienciasNatureza/fisica" element={<Fisica />} />
+          <Route path="cienciasNatureza/fisica/:id" element={<EstudoFisica />} />
+
           <Route path="cienciasNatureza/quimica" element={<Quimica />} />
+          <Route path="cienciasNatureza/quimica/:id" element={<EstudoQuimica />} />
+
           <Route path="cienciasNatureza/biologia" element={<Biologia />} />
+          <Route path="cienciasNatureza/biologia/:id" element={<EstudoBiologia />} />
 
           <Route path="linguagens" element={<Linguagens />} />
           <Route path="linguagens/portugues" element={<Portugues />} />

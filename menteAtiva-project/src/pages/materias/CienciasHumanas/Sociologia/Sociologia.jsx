@@ -189,25 +189,25 @@ const Sociologia = () => {
       <section className={style.vestibulares}>
         <div className={style.primeirosCards}>
           {assuntos &&
-            assuntos.slice(0, 20).map((item, index) => (
-              <div key={index} className={style.vestibularCard}>
-                <h3>{item.titulo}</h3>
-                <h4>{item.subTitulo}</h4>
-                <p>{item.resumo}</p>
+            assuntos.slice(0, 20).map((assunto) => (
+              <div key={assunto} className={style.vestibularCard}>
+                <h3>{assunto.titulo}</h3>
+                <h4>{assunto.subTitulo}</h4>
+                <p>{assunto.resumo}</p>
                 <button className={style.btn}>
-                  <Link to={item.rota}> Conferir agora</Link>
+                  <Link to={`/materias/cienciasHumanas/sociologia/${assunto.id}`} state={{assunto}}> Conferir agora</Link>
                 </button>
               </div>
             ))}
         </div>
         <div className={style.ultimosCards}>
-          {assuntos.slice(20).map((item, index) => (
-            <div key={index + 8} className={style.vestibularCard}>
-              <h3>{item.titulo}</h3>
-              <h4>{item.subTitulo}</h4>
-              <p>{item.resumo}</p>
+          {assuntos.slice(20).map((assunto) => (
+            <div key={assunto.id} className={style.vestibularCard}>
+              <h3>{assunto.titulo}</h3>
+              <h4>{assunto.subTitulo}</h4>
+              <p>{assunto.resumo}</p>
               <button className={style.btn}>
-                <Link to={item.rota}> Conferir agora</Link>
+                <Link to={`/materias/cienciasHumanas/sociologia/${assunto.id}`} state={{assunto}}> Conferir agora</Link>
               </button>
             </div>
           ))}
