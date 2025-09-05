@@ -66,7 +66,7 @@ const QuemSomos = () => {
 
               {/* Tragetória do Criador */}
               <div className={style.pessoa}>
-                <h2>Tragetória de {criadorAtual.nome}</h2>
+                <h2>Trajetória de {criadorAtual.nome}</h2>
                 <p>{criadorAtual.descricao}</p>
               </div>
             </div>
