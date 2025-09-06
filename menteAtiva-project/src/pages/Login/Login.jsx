@@ -56,24 +56,25 @@ const Login = () => {
   }
 
   const [qualAba, setqualAba] = useState("login");
+  function Reset() {
+    setqualAba("resetarSenha");
+  }
 
   return (
     <div className={style.Cadastro}>
       <div>
+
         <button className={style.actions} onClick={() => setqualAba("login")}>
           Login
         </button>
-
-        <button
-          className={style.actions}
-          onClick={() => setqualAba("cadastro")}
-        >
+        <button className={style.actions} onClick={() => setqualAba("cadastro")}>
           Cadastro
         </button>
+        
+        <div className={style.container}>
 
-        <div>
           {qualAba === "login" ? (
-            <form onSubmit={loginUsers}>
+            <form className={style.forms} onSubmit={loginUsers}>
               <input
                 type="email"
                 placeholder="Email"
@@ -91,7 +92,7 @@ const Login = () => {
                 <button type="submit">Entrar</button>
                 <button
                   type="button"
-                  onClick={() => setqualAba("resetarSenha")}
+                  onClick={Reset}
                 >
                   Esqueceu a senha?
                 </button>
@@ -126,6 +127,7 @@ const Login = () => {
               <button>Enviar link de recuperação</button>
             </form>
           ) : null}
+          <div className={style.circulo}></div>
         </div>
       </div>
     </div>
