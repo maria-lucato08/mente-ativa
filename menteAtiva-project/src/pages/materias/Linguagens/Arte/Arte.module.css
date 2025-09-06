@@ -1,37 +1,40 @@
 .titulo{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .titulo h1{
-  padding: 20px 0px;
-  font-size: 45px;
-  width: 100%;
-  position: relative;
-  text-align: center;
-  color: #ffcc00;
+    padding: 20px 0px;
+    font-size: 45px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    color: #ffcc00;
 }
 
 .vestibulares{
-  position: relative;
-  padding: 30px 0;
-  margin: 40px;
+    position: relative;
+    padding: 30px 0;
+    margin: 50px;
+    margin-right: 6px;
 }
 
 .primeirosCards{
-  display: flex; 
-  justify-content: center;
-  gap: 50px;
-  margin-bottom: 60px;
-} 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* exatamente 5 colunas */
+  gap: 20px;
+}
 
-.segundosCards{
+.ultimosCards {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 70px;
+  margin-top: 20px; /* opcional, para espaçamento */
 }
+
+
 
 .vestibularCard {
   display: flex;

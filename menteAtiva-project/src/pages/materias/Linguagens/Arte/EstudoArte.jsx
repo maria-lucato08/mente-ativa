@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
-import style from "./EstudoHistoria.module.css";
+import style from "./EstudoArte.module.css";
 
-const EstudoHistoria = () => {
+const EstudoArte = () => {
   const location = useLocation();
   const assunto = location.state?.assunto;
 
@@ -19,4 +19,4 @@ const EstudoHistoria = () => {
   );
 };
 
-export { EstudoHistoria };
+export { EstudoArte };

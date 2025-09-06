@@ -2,116 +2,98 @@ import { Link } from "react-router-dom";
 import style from "./Portugues.module.css";
 
 const Portugues = () => {
+  const assuntos = [
+  {
+    id: 1,
+    titulo: "🗣️ Oralidade e Comunicação",
+    subTitulo: "Debate, escuta e expressão oral",
+    resumo: "Trabalha escuta atenta, debates, apresentações e o uso de recursos multissemióticos em contextos sociais.",
+    conteudoPage: "Inclui planejamento da fala, turnos de diálogo, entonação e stress, produção oral de gêneros como narrar, relatar, expor, argumentar e descrever, adaptados a diferentes contextos e plataformas digitais."
+  },
+  {
+    id: 2,
+    titulo: "📖 Interpretação e Leitura",
+    subTitulo: "Compreensão crítica de textos",
+    resumo: "Estratégias de leitura e compreensão de textos diversos com análise de sentidos e intenções.",
+    conteudoPage: "Abrange textos literários, jornalísticos, científicos e digitais, identificação de ideias principais, fatos e opiniões, intertextualidade, ironia e uso de sinais de pontuação para interpretação."
+  },
+  {
+    id: 3,
+    titulo: "✍️ Redação e Produção Textual",
+    subTitulo: "Do planejamento à revisão",
+    resumo: "Planejamento e escrita de textos em diferentes gêneros, uso de argumentação, coesão, ferramentas digitais e revisão.",
+    conteudoPage: "Inclui elaboração de textos narrativos, expositivos, argumentativos e descritivos, organização de ideias, coesão e coerência, adaptação ao público e plataforma, revisão e edição."
+  },
+  {
+    id: 4,
+    titulo: "📚 Literatura e Cultura",
+    subTitulo: "Obras, movimentos e contextos",
+    resumo: "Estudo e apreciação da literatura brasileira, portuguesa, indígena, africana e latino-americana.",
+    conteudoPage: "Análise de estilos, movimentos literários, contextos históricos e culturais, identificação de influências e diálogos entre autores e tradições artísticas."
+  },
+  {
+    id: 5,
+    titulo: "🔤 Gramática e Análise Linguística",
+    subTitulo: "Norma, variação e efeitos de sentido",
+    resumo: "Estudo da morfossintaxe, variação linguística, estilística, coesão, coerência e usos da norma-padrão.",
+    conteudoPage: "Inclui análise de frases, estrutura de sentenças, funções sintáticas, pontuação, concordância, regência, variação linguística e efeitos de sentido em diferentes contextos de produção textual."
+  },
+  {
+    id: 6,
+    titulo: "📰 Textos Midiáticos e Digitais",
+    subTitulo: "Jornalismo, publicidade e cultura digital",
+    resumo: "Leitura, análise e produção de textos jornalísticos, publicitários, científicos e digitais.",
+    conteudoPage: "Abrange fake news, podcasts, vlogs, fanfics, resenhas, estratégias de produção textual para mídias digitais e análise crítica de conteúdos midiáticos e culturais."
+  },
+  {
+    id: 7,
+    titulo: "🧠 Crítica e Argumentação",
+    subTitulo: "Tese, evidências e contra-argumento",
+    resumo: "Desenvolvimento do pensamento crítico, posicionamento responsável em debates, construção de teses e defesa de ideias.",
+    conteudoPage: "Inclui refutação de argumentos, análise de evidências, uso de raciocínio lógico, construção de opiniões fundamentadas e produção de textos argumentativos claros e coerentes."
+  }
+];
+
   return (
     <div className={style.pag}>
       <div className={style.titulo}>
-        <h1>LÍGUA PORTUGUESA</h1>
+        <h1>PORTUGUES</h1>
       </div>
       <section className={style.vestibulares}>
-
         <div className={style.primeirosCards}>
-          <div className={style.vestibularCard}>
-            <h3>🗣️Oralidade e Comunicação</h3>
-            <h4>Debate, escuta e expressão oral</h4>
-            <p>
-              Trabalha escuta atenta, debates, apresentações e o uso de recursos
-              multissemióticos em contextos sociais.
-            </p>
-            <button className={style.btn}>
-              <Link to="/materias/linguagens/portugues/oralidade-comunicacao">
-                Conferir agora
-              </Link>
-            </button>
-          </div>
-
-          <div className={style.vestibularCard}>
-            <h3>📖Interpretação e Leitura</h3>
-            <h4>Compreensão crítica de textos</h4>
-            <p>
-              Estratégias de leitura e compreensão de textos diversos
-              (literários, jornalísticos, científicos e digitais), com análise
-              de sentidos e intenções.
-            </p>
-            <button className={style.btn}>
-              <Link to="/materias/linguagens/portugues/interpretacao-leitura">
-                Conferir agora
-              </Link>
-            </button>
-          </div>
-
-          <div className={style.vestibularCard}>
-            <h3>✍️Redação e Produção Textual</h3>
-            <h4>Do planejamento à revisão</h4>
-            <p>
-              Planejamento e escrita de textos em diferentes gêneros, uso de
-              argumentação, coesão, ferramentas digitais e revisão.
-            </p>
-            <button className={style.btn}>
-              <Link to="/materias/linguagens/portugues/redacao">
-                Conferir agora
-              </Link>
-            </button>
-          </div>
-
-          <div className={style.vestibularCard}>
-            <h3>📚Literatura e Cultura</h3>
-            <h4>Obras, movimentos e contextos</h4>
-            <p>
-              Estudo e apreciação da literatura brasileira, portuguesa,
-              indígena, africana e latino-americana, com análise de estilos,
-              movimentos e contextos históricos.
-            </p>
-            <button className={style.btn}>
-              <Link to="/materias/linguagens/portugues/literatura">
-                Conferir agora
-              </Link>
-            </button>
-          </div>
+          {assuntos.slice(0, 4).map((assunto) => (
+            <div key={assunto.id} className={style.vestibularCard}>
+              <h3>{assunto.titulo}</h3>
+              <h4>{assunto.subTitulo}</h4>
+              <p>{assunto.resumo}</p>
+              <button className={style.btn}>
+                <Link
+                  to={`/materias/linguagens/portugues/${assunto.id}`}
+                  state={{ assunto }}
+                >
+                  Estudar
+                </Link>
+              </button>
+            </div>
+          ))}
         </div>
-
-        <div className={style.segundosCards}>
-          <div className={style.vestibularCard}>
-            <h3>🔤Gramática e Análise Linguística</h3>
-            <h4>Norma, variação e efeitos de sentido</h4>
-            <p>
-              Estudo da morfossintaxe, variação linguística, estilística,
-              coesão, coerência e usos da norma-padrão.
-            </p>
-            <button className={style.btn}>
-              <Link to="/materias/linguagens/portugues/gramatica-analise">
-                Conferir agora
-              </Link>
-            </button>
-          </div>
-
-          <div className={style.vestibularCard}>
-            <h3>📰Textos Midiáticos e Digitais</h3>
-            <h4>Jornalismo, publicidade e cultura digital</h4>
-            <p>
-              Leitura, análise e produção de textos jornalísticos,
-              publicitários, científicos e da cultura digital (fake news,
-              podcasts, vlogs, fanfics, resenhas).
-            </p>
-            <button className={style.btn}>
-              <Link to="/materias/linguagens/portugues/textoMidiaticos">
-                Conferir agora
-              </Link>
-            </button>
-          </div>
-
-          <div className={style.vestibularCard}>
-            <h3>🧠Crítica e Argumentação</h3>
-            <h4>Tese, evidências e contra-argumento</h4>
-            <p>
-              Desenvolvimento do pensamento crítico, posicionamento responsável
-              em debates, construção de teses, defesa de ideias e refutação.
-            </p>
-            <button className={style.btn}>
-              <Link to="/materias/linguagens/portugues/critica-argumentacao">
-                Conferir agora
-              </Link>
-            </button>
-          </div>
+        <div className={style.ultimosCards}>
+          {assuntos.slice(4).map((assunto) => (
+            <div key={assunto.id} className={style.vestibularCard}>
+              <h3>{assunto.titulo}</h3>
+              <h4>{assunto.subTitulo}</h4>
+              <p>{assunto.resumo}</p>
+              <button className={style.btn}>
+                <Link
+                  to={`/materias/linguagens/portugues/${assunto.id}`}
+                  state={{ assunto }}
+                >
+                  {" "}
+                  Estudar{" "}
+                </Link>
+              </button>
+            </div>
+          ))}
         </div>
       </section>
     </div>

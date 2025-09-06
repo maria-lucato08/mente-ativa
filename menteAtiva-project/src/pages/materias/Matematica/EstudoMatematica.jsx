@@ -1,15 +1,15 @@
 import { useLocation } from "react-router-dom";
-import style from "./EstudoHistoria.module.css";
+import style from "./EstudoMatematica.module.css";
 
-const EstudoHistoria = () => {
+const EstudoMatematica = () => {
   const location = useLocation();
   const assunto = location.state?.assunto;
+  
+    if(!assunto){
+        return <p>Nenhum assunto encontrado</p>
+    }
 
-  if (!assunto) {
-    return <p>Nenhum assunto encontrado</p>;
-  }
-
-  return (
+    return (
     <div className={style.titulo}>
       <h1>{assunto.titulo}</h1>
       <h2>{assunto.subTitulo}</h2>
@@ -19,4 +19,4 @@ const EstudoHistoria = () => {
   );
 };
 
-export { EstudoHistoria };
+export { EstudoMatematica };

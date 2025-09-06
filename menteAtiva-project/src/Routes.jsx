@@ -9,13 +9,10 @@ import {
   Sobre,
   Login,
 
-  Matematica,
   Introducao,
-  Funcoes,
-  PaPg,
-  Estatistica,
-  Probabilidade,
-  Geometria,
+
+  Matematica,
+  EstudoMatematica,
 
   CienciasHumanas,
   Historia,
@@ -42,32 +39,16 @@ import {
   
   Linguagens,
   Portugues,
-
+  EstudoPortugues,
+  
   Ingles,
-  EscutaOralidade,
-  LeituraEscrita,
-  AnaliseLinguistica,
+  EstudoIngles,
   
   EdFisica,
-  BrincadeirasJogos,
-  Esportes,
-  Ginastica,
-  Danca,
-  Luta,
-  CorporaisAventura,
-  MovimentoSaude,
-
+  EstudoEdFisica,
+  
   Arte,
-  CulturaSociedade,
-  LinguagemCriacao,
-  TecnicasPatrimonio,
-  OralidadeComunicacao,
-  InterpretacaoLeitura,
-  Redacao,
-  Literatura,
-  Gramatica,
-  TextosMidiaticos,
-  CriticaArgumentacao,
+  EstudoArte,
   
 } from "./pages";
 
@@ -82,11 +63,7 @@ const Router = () => {
           <Route path="introducao" element={<Introducao />} />
 
           <Route path="matematica" element={<Matematica />} />
-          <Route path="matematica/funcoes" element={<Funcoes />} />
-          <Route path="matematica/pa-pg" element={<PaPg />} />
-          <Route path="matematica/estatisticas" element={<Estatistica />} />
-          <Route path="matematica/probabilidade" element={<Probabilidade />} />
-          <Route path="matematica/geometria" element={<Geometria />} />
+          <Route path="matematica/:id" element={<EstudoMatematica />} />
 
           <Route path="cienciasHumanas" element={<CienciasHumanas />} />
           <Route path="cienciasHumanas/historia" element={<Historia />} />
@@ -113,33 +90,16 @@ const Router = () => {
 
           <Route path="linguagens" element={<Linguagens />} />
           <Route path="linguagens/portugues" element={<Portugues />} />
-          <Route path="linguagens/portugues/oralidade-comunicacao" element={<OralidadeComunicacao />} />
-          <Route path="linguagens/portugues/interpretacao-leitura" element={<InterpretacaoLeitura />} />
-          <Route path="linguagens/portugues/redacao" element={<Redacao />} />
-          <Route path="linguagens/portugues/literatura" element={<Literatura />} />
-          <Route path="linguagens/portugues/gramatica-analise" element={<Gramatica />} />
-          <Route path="linguagens/portugues/textoMidiaticos" element={<TextosMidiaticos />} />
-          <Route path="linguagens/portugues/critica-argumentacao" element={<CriticaArgumentacao />} />
-
-
+          <Route path="linguagens/portugues/:id" element={<EstudoPortugues />} />
+       
           <Route path="linguagens/ingles" element={<Ingles />} />
-          <Route path="linguagens/ingles/escuta-oralidade" element={<EscutaOralidade />} />
-          <Route path="linguagens/ingles/leitura-escrita" element={<LeituraEscrita />} />
-          <Route path="linguagens/ingles/analiseLinguistica" element={<AnaliseLinguistica />} />
+          <Route path="linguagens/ingles/:id" element={<EstudoIngles />} />
 
           <Route path="linguagens/edFisica" element={<EdFisica />} />
-          <Route path="linguagens/edFisica/brincadeirasJogos" element={<BrincadeirasJogos />} />
-          <Route path="linguagens/edFisica/esportes" element={<Esportes />} />
-          <Route path="linguagens/edFisica/danca" element={<Danca />} />
-          <Route path="linguagens/edFisica/gisnastica" element={<Ginastica />} />
-          <Route path="linguagens/edFisica/luta" element={<Luta />} />
-          <Route path="linguagens/edFisica/praticasCorporais-aventura" element={<CorporaisAventura />} />
-          <Route path="linguagens/edFisica/corpo-movimento-saude" element={<MovimentoSaude />} />
+          <Route path="linguagens/edFisica/:id" element={<EstudoEdFisica />} />
 
           <Route path="linguagens/arte" element={<Arte />} />
-          <Route path="linguagens/arte/linguagemCracao" element={<LinguagemCriacao />} />
-          <Route path="linguagens/arte/tecnicasPatrimonio" element={<TecnicasPatrimonio />} />
-          <Route path="linguagens/arte/culturaSociedade" element={<CulturaSociedade />} />
+          <Route path="linguagens/arte/:id" element={<EstudoArte />} />
           
         </Route>
         <Route path="/quem-somos" element={<QuemSomos />} />

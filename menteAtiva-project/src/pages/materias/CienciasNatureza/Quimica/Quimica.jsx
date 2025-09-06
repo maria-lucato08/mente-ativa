@@ -125,7 +125,7 @@ const Quimica = () => {
       <section className={style.vestibulares}>
         <div className={style.primeirosCards}>
           {assuntos &&
-            assuntos.slice(0, 12).map((assunto) => (
+            assuntos.map((assunto) => (
               <div key={assunto.id} className={style.vestibularCard}>
                 <h3>{assunto.titulo}</h3>
                 <h4>{assunto.subTitulo}</h4>
