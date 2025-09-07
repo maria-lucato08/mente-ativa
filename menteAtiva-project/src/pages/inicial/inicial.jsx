@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hook";
-import style from "./inicial.module.css";
+import style from "./Inicial.module.css";
 
 const Inicial = () => {
   const { user } = useAuth();
