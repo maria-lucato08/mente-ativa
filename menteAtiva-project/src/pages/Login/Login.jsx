@@ -2,12 +2,15 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
 import { api } from "../../services";
+import { useAuth } from "../../hook";
 
 const Login = () => {
   const inputName = useRef();
   const inputEmail = useRef();
   const inputPassword = useRef();
   const inputConfirmPassword = useRef();
+
+  const { login } = useAuth();
   
   const navigate = useNavigate();
 
@@ -47,7 +50,10 @@ const Login = () => {
         email: inputEmail.current.value,
         password: inputPassword.current.value,
       });
-      localStorage.setItem("token", response.data.token);
+      // localStorage.setItem("token", response.data.token);
+
+      login({ username: response.data.username });
+      login({ username: inputEmail.current.value.split("@")[0] }); 
 
       navigate("/");
     } catch (err) {
