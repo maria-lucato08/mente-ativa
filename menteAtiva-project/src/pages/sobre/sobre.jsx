@@ -26,10 +26,6 @@ const Sobre = () => {
             </div>
           </section>
 
-          <div className={style.fundoOndasCards}>
-            <div className={style.wave}></div>
-            <div className={style.wave}></div>
-          </div>
             <div className={style.conteudo}>
               <section className={style.card}>
                 <div className={style.texto}>

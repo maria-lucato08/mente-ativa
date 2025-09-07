@@ -69,13 +69,14 @@ const Login = () => {
   return (
     <div className={style.Cadastro}>
       <div>
-
+        <div className={style.btnPrincipais}>
         <button className={style.actions} onClick={() => setqualAba("login")}>
           Login
         </button>
         <button className={style.actions} onClick={() => setqualAba("cadastro")}>
           Cadastro
         </button>
+        </div>
         
         <div className={style.container}>
 
@@ -95,7 +96,7 @@ const Login = () => {
               />
 
               <div>
-                <button type="submit">Entrar</button>
+                <button type="submit" className={style.btnEntrar}>Entrar</button>
                 <button
                   type="button"
                   onClick={Reset}
