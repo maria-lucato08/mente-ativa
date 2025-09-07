@@ -128,7 +128,7 @@ const Matematica = () => {
   return (
      <div className={style.pag}>
       <div className={style.titulo}>
-        <h1>MATEMATICA</h1>
+        <h1>MATEMÁTICA</h1>
       </div>
       <section className={style.vestibulares}>
         <div className={style.primeirosCards}>

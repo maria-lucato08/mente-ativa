@@ -120,7 +120,7 @@ const Quimica = () => {
     return(
         <div className={style.pag}>
       <div className={style.titulo}>
-        <h1>QUIMICA</h1>
+        <h1>QUÍMICA</h1>
       </div>
       <section className={style.vestibulares}>
         <div className={style.primeirosCards}>

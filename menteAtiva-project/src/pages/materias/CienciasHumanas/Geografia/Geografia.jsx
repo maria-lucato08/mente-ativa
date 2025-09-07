@@ -75,7 +75,7 @@ const Geografia = () => {
                 <h4>{assunto.subTitulo}</h4>
                 <p>{assunto.resumo}</p>
                 <button className={style.btn}>
-                  <Link to={`/materias/cienciasHumanas/geografia/${assunto.id}`} state={{assunto}}> Conferir agora</Link>
+                  <Link to={`/materias/cienciasHumanas/geografia/${assunto.id}`} state={{assunto}}> Estudar</Link>
                 </button>
               </div>
             ))}
@@ -87,7 +87,7 @@ const Geografia = () => {
               <h4>{assunto.subTitulo}</h4>
               <p>{assunto.resumo}</p>
               <button className={style.btn}>
-                <Link to={`/materias/cienciasHumanas/geografia/${assunto.id}`} state={{assunto}}> Conferir agora</Link>
+                <Link to={`/materias/cienciasHumanas/geografia/${assunto.id}`} state={{assunto}}> Estudar</Link>
               </button>
             </div>
           ))}

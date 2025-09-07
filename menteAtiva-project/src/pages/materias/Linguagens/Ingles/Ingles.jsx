@@ -78,7 +78,7 @@ const Ingles = () => {
   return (
     <div className={style.pag}>
       <div className={style.titulo}>
-        <h1>INGLES</h1>
+        <h1>LÍNGUA INGLESA</h1>
       </div>
       <section className={style.vestibulares}>
         <div className={style.primeirosCards}>

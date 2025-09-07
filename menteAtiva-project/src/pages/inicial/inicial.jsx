@@ -1,7 +1,19 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hook";
 import style from "./inicial.module.css";
 
 const Inicial = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    if (!user) {
+      e.preventDefault();
+      alert("Você precisa estar logado para acessar a página de matérias!");
+      navigate("/login");
+    }
+  };
+
   return (
     <div className={style.containerB}>
       {/* Fundo Ondas */}
@@ -17,7 +29,7 @@ const Inicial = () => {
             Aprender nunca foi tão <span>interativo!</span>
           </h1>
           <button className={style.cta}>
-            <NavLink to="/materias">Começar Agora</NavLink>
+            <NavLink to="/materias" onClick={(e) => handleClick(e, "/materias")}>Começar Agora</NavLink>
           </button>
         </div>
       </section>
@@ -100,57 +112,60 @@ const Inicial = () => {
         <section className={style.materias}>
           <h2 className={style.titulo}>Nossas matérias em destaques</h2>
           <div className={style.cards}>
-            <Link to="/materias/matematica">
-            <div className={style.card}>
-              <span className={style.icon}>🧮</span>
-              <h3>Matemática</h3>
-              <p>
-                Aprenda álgebra, geometria, funções e mais de forma interativa.
-              </p>
-            </div>
+            <Link to="/materias/matematica" onClick={(e) => handleClick(e, "/materias/matematica")}>
+              <div className={style.card}>
+                <span className={style.icon}>🧮</span>
+                <h3>Matemática</h3>
+                <p>
+                  Aprenda álgebra, geometria, funções e mais de forma
+                  interativa.
+                </p>
+              </div>
             </Link>
 
-            <Link to="/materias/cienciasNatureza/quimica">
-            <div className={style.card}>
-              <span className={style.icon}>⚗️</span>
-              <h3>Química</h3>
-              <p>
-                Explore experimentos, fórmulas e conceitos essenciais da
-                química.
-              </p>
-            </div>
+             <Link to="/materias/cienciasNatureza/quimica" onClick={(e) => handleClick(e, "/materias/cienciasNatureza/quimica")}>
+              <div className={style.card}>
+                <span className={style.icon}>⚗️</span>
+                <h3>Química</h3>
+                <p>
+                  Explore experimentos, fórmulas e conceitos essenciais da
+                  química.
+                </p>
+              </div>
             </Link>
 
-            <Link to="/materias/cienciasnatureza/fisica">
-            <div className={style.card}>
-              <span className={style.icon}>🔬</span>
-              <h3>Física</h3>
-              <p>
-                Compreenda leis, teorias e exercícios práticos do mundo físico.
-              </p>
-            </div>
+
+             <Link to="/materias/cienciasNatureza/fisica" onClick={(e) => handleClick(e, "/materias/cienciasNatureza/fisica")}>
+              <div className={style.card}>
+                <span className={style.icon}>🔬</span>
+                <h3>Física</h3>
+                <p>
+                  Compreenda leis, teorias e exercícios práticos do mundo
+                  físico.
+                </p>
+              </div>
             </Link>
 
-            <Link to="/materias/linguagens/portugues">
-            <div className={style.card}>
-              <span className={style.icon}>📖</span>
-              <h3>Português</h3>
-              <p>
-                Melhore interpretação de texto, gramática e escrita criativa.
-              </p>
-            </div>
+             <Link to="/materias/linguagens/portugues" onClick={(e) => handleClick(e, "/materias/linguagens/portugues")}>
+              <div className={style.card}>
+                <span className={style.icon}>📖</span>
+                <h3>Português</h3>
+                <p>
+                  Melhore interpretação de texto, gramática e escrita criativa.
+                </p>
+              </div>
             </Link>
 
-            <Link to="/materias/cienciasHumanas/historia">
-            <div className={style.card}>
-              <span className={style.icon}>🏛️</span>
-              <h3>História</h3>
-              <p>
-                Explore os grandes eventos, civilizações e períodos históricos de forma interativa.
-              </p>
-            </div>
+             <Link to="/materias/ienciasHumanas/historia" onClick={(e) => handleClick(e, "/materias/ienciasHumanas/historia")}>
+              <div className={style.card}>
+                <span className={style.icon}>🏛️</span>
+                <h3>História</h3>
+                <p>
+                  Explore os grandes eventos, civilizações e períodos históricos
+                  de forma interativa.
+                </p>
+              </div>
             </Link>
-            
           </div>
         </section>
       </div>

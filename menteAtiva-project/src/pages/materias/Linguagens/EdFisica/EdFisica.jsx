@@ -57,7 +57,7 @@ const EdFisica = () => {
   return (
     <div className={style.pag}>
       <div className={style.titulo}>
-        <h1>EDUCACAO FISICA</h1>
+        <h1>EDUCAÇÃO FÍSICA</h1>
       </div>
       <section className={style.vestibulares}>
         <div className={style.primeirosCards}>

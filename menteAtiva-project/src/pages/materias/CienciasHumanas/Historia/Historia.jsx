@@ -153,8 +153,7 @@ const Historia = () => {
                   to={`/materias/cienciasHumanas/historia/${assunto.id}`}
                   state={{ assunto }}
                 >
-                  {" "}
-                  Conferir agora
+                  Estudar
                 </Link>
               </button>
             </div>
