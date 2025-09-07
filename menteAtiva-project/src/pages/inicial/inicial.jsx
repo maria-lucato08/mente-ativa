@@ -1,13 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import style from "./inicial.module.css";
 
 const Inicial = () => {
-  const comentarios = [
-    { titulo: "Um elogio incrível", nome: "Nome", descricao: "Descrição" },
-    { titulo: "Um feedback fantástico", nome: "Nome", descricao: "Descrição" },
-    { titulo: "Uma avaliação positiva", nome: "Nome", descricao: "Descrição" },
-  ];
-
   return (
     <div className={style.containerB}>
       {/* Fundo Ondas */}
@@ -20,9 +14,8 @@ const Inicial = () => {
       <section className={style.hero}>
         <div className={style.textoH}>
           <h1>
-            Vestibular não é <span>sorte</span>, é <span>preparo!</span>
+            Aprender nunca foi tão <span>interativo!</span>
           </h1>
-          <p>Estamos aqui para te ajudar a conquistar seus sonhos acadêmicos</p>
           <button className={style.cta}>
             <NavLink to="/materias">Começar Agora</NavLink>
           </button>
@@ -101,23 +94,63 @@ const Inicial = () => {
                 <a href="https://www.google.com/"> Conferir agora</a>
               </button>
             </div>
-
-            <div className={style.imagem}>
-              <img src="./assets/usp.png" alt="Logo USP" />
-            </div>
           </div>
         </section>
-
-        {/* Comentários */}
-        <section className={style.comentarios}>
-          <h2>Comentários recentes</h2>
+        {/* 3. Seção de matérias */}
+        <section className={style.materias}>
+          <h2 className={style.titulo}>Nossas matérias em destaques</h2>
           <div className={style.cards}>
-            {comentarios.map((c, index) => (
-              <div key={index} className={style.card}>
-                <h4>"{c.titulo}"</h4>
-                <p className={style.descricao}>{c.descricao}</p>
-              </div>
-            ))}
+            <Link to="/materias/matematica">
+            <div className={style.card}>
+              <span className={style.icon}>🧮</span>
+              <h3>Matemática</h3>
+              <p>
+                Aprenda álgebra, geometria, funções e mais de forma interativa.
+              </p>
+            </div>
+            </Link>
+
+            <Link to="/materias/cienciasNatureza/quimica">
+            <div className={style.card}>
+              <span className={style.icon}>⚗️</span>
+              <h3>Química</h3>
+              <p>
+                Explore experimentos, fórmulas e conceitos essenciais da
+                química.
+              </p>
+            </div>
+            </Link>
+
+            <Link to="/materias/cienciasnatureza/fisica">
+            <div className={style.card}>
+              <span className={style.icon}>🔬</span>
+              <h3>Física</h3>
+              <p>
+                Compreenda leis, teorias e exercícios práticos do mundo físico.
+              </p>
+            </div>
+            </Link>
+
+            <Link to="/materias/linguagens/portugues">
+            <div className={style.card}>
+              <span className={style.icon}>📖</span>
+              <h3>Português</h3>
+              <p>
+                Melhore interpretação de texto, gramática e escrita criativa.
+              </p>
+            </div>
+            </Link>
+
+            <Link to="/materias/cienciasHumanas/historia">
+            <div className={style.card}>
+              <span className={style.icon}>🏛️</span>
+              <h3>História</h3>
+              <p>
+                Explore os grandes eventos, civilizações e períodos históricos de forma interativa.
+              </p>
+            </div>
+            </Link>
+            
           </div>
         </section>
       </div>
