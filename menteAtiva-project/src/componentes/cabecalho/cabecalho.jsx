@@ -20,7 +20,7 @@ const Cabecalho = () => {
       <nav>
         <NavLink to="/">
           <img
-            src="./assets/logo+escrita.png"
+            src="/assets/logo+escrita.png"
             alt="Logo Mente Ativa"
             width={200}
             height={100}
