@@ -10,7 +10,7 @@ const quemSomos = [
   {
     nome: "Guilherme Vieira",
     descricao: "Sou estudante do curso técnico em Desenvolvimento de Sistemas, onde venho aprendendo a programar, desenvolver projetos e aplicar soluções tecnológicas na prática. Essa trajetória tem me permitido crescer tanto no lado acadêmico quanto no profissional.",
-    imagem: "./assets/fotoTeste.png",
+    imagem: "./assets/fotoGuilherme.jpg",
   },
   {
     nome: "Yasmin Amaral",
