@@ -1,2 +1,2 @@
-export * from "./layoutPadrao";
+export * from "./LayoutPadrao";
 export * from "./LayoutMateria";
