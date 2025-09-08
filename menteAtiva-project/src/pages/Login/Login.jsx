@@ -62,18 +62,26 @@ const Login = () => {
   }
 
   const [qualAba, setqualAba] = useState("login");
-  function Reset() {
-    setqualAba("resetarSenha");
+
+  const [preenchido, setPreenchido] = useState(false);
+  
+  function Switch(nAba){
+  var aba = nAba
+  setPreenchido(true);
+  setTimeout(()=>{setqualAba(aba);},1000)
+  setTimeout(() => {
+    setPreenchido(false);
+  }, 1000);
   }
 
   return (
     <div className={style.Cadastro}>
       <div>
         <div className={style.btnPrincipais}>
-        <button className={style.actions} onClick={() => setqualAba("login")}>
+        <button className={style.actions} onClick={()=>{Switch("login")}}>
           Login
         </button>
-        <button className={style.actions} onClick={() => setqualAba("cadastro")}>
+        <button className={style.actions} onClick={()=>{Switch("cadastro")}}>
           Cadastro
         </button>
         </div>
@@ -99,7 +107,7 @@ const Login = () => {
                 <button type="submit" className={style.btnEntrar}>Entrar</button>
                 <button
                   type="button"
-                  onClick={Reset}
+                  onClick={()=>{Switch("reset")}}
                 >
                   Esqueceu a senha?
                 </button>
@@ -128,17 +136,16 @@ const Login = () => {
               />
               <button type="submit">Cadastrar</button>
             </form>
-          ) : qualAba === "resetarSenha" ? (
+          ) : qualAba === "reset" ? (
             <form>
               <input type="email" placeholder="Email" required />
               <button>Enviar link de recuperação</button>
             </form>
           ) : null}
-          <div className={style.circulo}></div>
+          <div id="circulo" className={`${style.circulo} ${preenchido ? style.preenchido : ''}`}></div>
         </div>
       </div>
     </div>
   );
 };
-
 export { Login };

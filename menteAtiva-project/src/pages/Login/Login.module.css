@@ -54,10 +54,17 @@ button.actions:hover{
     border: var(--cinzaEsbranquicado) 4px solid;
     border-radius: 50%;
     animation: deformar 6s infinite ease-in-out;
-    transition:all 2s;
+    transition:all 1s;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
     z-index: 2;
     pointer-events: none;
+}
+.circulo.preenchido
+{
+    background-color: var(--cinzaEsbranquicado);
+    pointer-events: fill;
+    scale: 1.05;
+    box-shadow: 0 0 10px var(--amarelo);
 }
 @keyframes deformar {
     0% {border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;}
