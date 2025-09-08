@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
-import style from "./quemSomos.module.css";
+import style from "./QuemSomos.module.css";
 
 const quemSomos = [
   { nome: "Maria Elis", 
