@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import style from "./ingles.module.css";
+import style from "./Ingles.module.css";
 
 const Ingles = () => {
   const assuntos = [
