@@ -1,4 +1,4 @@
-import style from './conteudo.module.css';
+import style from './Conteudo.module.css';
 
 const Conteudo = (props) => {
   const { children } = props;
