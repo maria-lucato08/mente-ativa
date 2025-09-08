@@ -1,5 +1,5 @@
 import { TIPO_BOTAO } from "./constantes";
-import style from "./botao.module.css";
+import style from "./Botao.module.css";
 
 const Botao = (props) => {
     const { texto, tipo=TIPO_BOTAO.PRIMARIO} = props;
