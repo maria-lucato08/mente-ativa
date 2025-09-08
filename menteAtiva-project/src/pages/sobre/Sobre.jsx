@@ -1,5 +1,5 @@
-import style from "./sobre.module.css";
 import sobreImg from "/assets/sobre.png";
+import style from "./Sobre.module.css";
 
 const Sobre = () => {
   return (
