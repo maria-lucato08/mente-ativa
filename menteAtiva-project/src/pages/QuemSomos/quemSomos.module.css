@@ -1,0 +1,89 @@
+.QuemSomos {
+ background: linear-gradient(150deg,rgb(17, 35, 53), var(--azulEscuro)50%, #244d99 100%);
+  color: var(--branco);
+  padding: 5rem;
+  text-align: center;
+  font-family: var(--fonte);
+  display: grid; 
+}
+
+.osCriadores{
+  text-align: justify;
+  padding-left: 18%;
+}
+
+.osCriadores h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.osCriadores p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 4rem;
+}
+
+/* Carrossel */
+.carrosselConteudo {
+  display: flex;
+  align-items: center; 
+  justify-content: center; /*  column */
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  float: center;
+}
+
+.alinha2{
+  display: flex;
+  justify-content: center;
+}
+
+.carrosselBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--amarelo);
+  transition: transform 0.2s ease;
+}
+
+.carrosselImg {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15%; /* imagem redonda */
+  border: 4px solid var(--amarelo); /* detalhe amarelo */
+  box-shadow: 0px 0px 20px var(--amarelo);  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carrosselBtn:hover {
+  transform: scale(1.2);
+}
+
+
+/* Informações do Criador */
+.info {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.pessoa {
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+.pessoa h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--amarelo); /* títulos em amarelo */
+  margin-bottom: 0.5rem;
+  
+}
+
+.pessoa p {
+  font-size: 1rem;
+  color: var(--branco);
+  line-height: 1.6;
+}
