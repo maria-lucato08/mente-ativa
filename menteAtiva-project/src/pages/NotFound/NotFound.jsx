@@ -7,7 +7,7 @@ const NotFound = () => {
        <h1>Erro 404</h1>
        <p>Página não encontrada</p>
       </div>
-      <img src="./assets/imgNotFound.png" alt="computador" width={300} height={300} />
+      <img src="/assets/imgNotFound.png" alt="computador" width={300} height={300} />
     </div>
   );
 };

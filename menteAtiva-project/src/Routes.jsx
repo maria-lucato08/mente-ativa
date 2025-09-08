@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-
 import { LayoutMateria, LayoutPadrao } from "./layouts";
+import  {PrivateRoutes} from "./componentes"; 
 
 import {
   Inicial,
@@ -58,7 +58,7 @@ const Router = () => {
       <Route path="/" element={<LayoutPadrao />}>
         <Route path="/" element={<Inicial />} />
 
-        <Route path="/materias" element={<LayoutMateria />}>
+        <Route path="/materias" element={<PrivateRoutes> <LayoutMateria /> </PrivateRoutes>}>
           <Route index element={<Navigate to="introducao" replace />} />
           <Route path="introducao" element={<Introducao />} />
 
