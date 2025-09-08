@@ -1,1 +1,1 @@
-export * from "./layoutPadrao";
+export * from "./LayoutPadrao";
