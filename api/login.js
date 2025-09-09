@@ -1,24 +1,53 @@
 import prisma from "./prisma.js";
-import { SECRET_KEY } from "./auth.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+
+const SECRET = process.env.JWT_SECRET;
 
 export default async function handler(req, res) {
-  if (req.method !== "POST")
-    return res.status(405).json({ message: "Método não permitido" });
+  // ======== CORS ========
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173"); // seu frontend
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  const bcrypt = await import("bcrypt");
+  // responder preflight request
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Método não permitido" });
+  }
+
   const { email, password } = req.body;
 
   try {
     const user = await prisma.cadastroUsers.findUnique({ where: { email } });
-    if (!user) return res.status(400).json({ message: "Usuário não encontrado" });
+    if (!user) {
+      return res.status(401).json({ message: "Usuário não encontrado" });
+    }
 
-    const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) return res.status(400).json({ message: "Senha incorreta" });
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) {
+      return res.status(401).json({ message: "Senha incorreta" });
+    }
 
-    const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: "1h" });
-    return res.status(200).json({ message: "Login realizado com sucesso", token });
+    const token = jwt.sign({ id: user.id, email: user.email }, SECRET, {
+      expiresIn: "1h",
+    });
+
+    return res.status(200).json({
+      message: "Login realizado com sucesso",
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      },
+    });
   } catch (err) {
-    return res.status(500).json({ message: "Erro no login", error: err.message });
+    return res
+      .status(500)
+      .json({ message: "Erro no login", error: err.message });
   }
 }
