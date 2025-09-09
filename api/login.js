@@ -1,7 +1,7 @@
 import prisma from "./prisma.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { applyCors } from "./_cors";
+import { applyCors } from "./cors";
 
 const SECRET = process.env.JWT_SECRET;
 

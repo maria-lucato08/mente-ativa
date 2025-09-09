@@ -1,6 +1,6 @@
 import prisma from "./prisma.js";
 import bcrypt from "bcrypt";
-import { applyCors } from "./_cors";
+import { applyCors } from "./cors";
 
 export default async function handler(req, res) {
   try {
