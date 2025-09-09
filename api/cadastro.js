@@ -2,15 +2,14 @@ import prisma from "./prisma.js";
 import { authMiddleware } from "./auth.js";
 
 export default async function handler(req, res) {
-  // ===== CORS =====
-  const allowedOrigins = [
-    "https://mente-ativa-testanto.vercel.app",
-    "https://mente-ativa-zopy.vercel.app",
-    "http://localhost:5173", // para testes locais
-  ];
+  // ===== CORS dinâmico =====
   const origin = req.headers.origin;
 
-  if (allowedOrigins.includes(origin)) {
+  if (
+    origin === "http://localhost:5173" || // localhost
+    origin === "https://mente-ativa-zopy.vercel.app" || // backend
+    origin?.startsWith("https://mente-ativa-testanto-") // qualquer subdomínio Vercel do frontend
+  ) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
 
@@ -18,14 +17,12 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   // responder preflight OPTIONS
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
+  if (req.method === "OPTIONS") return res.status(200).end();
 
   // ===== GET: listar usuários (requer autenticação) =====
   if (req.method === "GET") {
     try {
-      const { user } = authMiddleware(req, res); // valida token JWT
+      const { user } = authMiddleware(req, res);
       const users = await prisma.cadastroUsers.findMany();
       return res.status(200).json(users);
     } catch (err) {

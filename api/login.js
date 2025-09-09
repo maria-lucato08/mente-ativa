@@ -5,15 +5,14 @@ import bcrypt from "bcrypt";
 const SECRET = process.env.JWT_SECRET;
 
 export default async function handler(req, res) {
-  // ===== CORS =====
-  const allowedOrigins = [
-    "https://mente-ativa-testanto.vercel.app",
-    "https://mente-ativa-zopy.vercel.app",
-    "http://localhost:5173", // para testes locais
-  ];
+  // ===== CORS dinâmico =====
   const origin = req.headers.origin;
 
-  if (allowedOrigins.includes(origin)) {
+  if (
+    origin === "http://localhost:5173" || // localhost
+    origin === "https://mente-ativa-zopy.vercel.app" || // backend
+    origin?.startsWith("https://mente-ativa-testanto-") // qualquer subdomínio Vercel do frontend
+  ) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
 
@@ -21,9 +20,7 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   // responder preflight OPTIONS
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
+  if (req.method === "OPTIONS") return res.status(200).end();
 
   // ===== Apenas POST permitido =====
   if (req.method !== "POST") {
@@ -34,31 +31,19 @@ export default async function handler(req, res) {
 
   try {
     const user = await prisma.cadastroUsers.findUnique({ where: { email } });
-    if (!user) {
-      return res.status(401).json({ message: "Usuário não encontrado" });
-    }
+    if (!user) return res.status(401).json({ message: "Usuário não encontrado" });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) {
-      return res.status(401).json({ message: "Senha incorreta" });
-    }
+    if (!valid) return res.status(401).json({ message: "Senha incorreta" });
 
-    const token = jwt.sign({ id: user.id, email: user.email }, SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign({ id: user.id, email: user.email }, SECRET, { expiresIn: "1h" });
 
     return res.status(200).json({
       message: "Login realizado com sucesso",
       token,
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-      },
+      user: { id: user.id, name: user.name, email: user.email },
     });
   } catch (err) {
-    return res
-      .status(500)
-      .json({ message: "Erro no login", error: err.message });
+    return res.status(500).json({ message: "Erro no login", error: err.message });
   }
 }
