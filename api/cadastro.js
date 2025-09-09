@@ -1,12 +1,18 @@
 import prisma from "./prisma.js";
 import bcrypt from "bcrypt";
-import { applyCors } from "./cors";
 
 export default async function handler(req, res) {
   try {
-    // aplica CORS
-    if (applyCors(req, res)) return;
+    // ===== CORS =====
+    res.setHeader("Access-Control-Allow-Origin", "*"); // ou seu domínio
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
+    if (req.method === "OPTIONS") {
+      return res.status(200).end();
+    }
+
+    // ===== Apenas POST =====
     if (req.method !== "POST") {
       return res.status(405).json({ message: "Método não permitido" });
     }
@@ -22,7 +28,9 @@ export default async function handler(req, res) {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    await prisma.cadastroUsers.create({ data: { name, email, password: hashedPassword } });
+    await prisma.cadastroUsers.create({
+      data: { name, email, password: hashedPassword },
+    });
 
     return res.status(201).json({ message: "Usuário cadastrado com sucesso" });
   } catch (err) {
