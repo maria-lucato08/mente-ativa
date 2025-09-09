@@ -2,12 +2,26 @@ import prisma from "./prisma.js";
 import { authMiddleware } from "./auth.js";
 
 export default async function handler(req, res) {
-  // ===== CORS =====
-  res.setHeader("Access-Control-Allow-Origin", "mente-ativa-testanto.vercel.app");
+  const allowedOrigins = [
+    "https://mente-ativa-testanto-l658sur0r-maria-lucato08s-projects.vercel.app",
+    "https://mente-ativa-zopy.vercel.app", // se você quiser permitir o próprio backend
+    "http://localhost:5173", // para testes locais
+  ];
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  // Responder preflight request
+  // responder preflight OPTIONS
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  // responder preflight request
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
