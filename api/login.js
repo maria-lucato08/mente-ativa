@@ -5,8 +5,10 @@ import bcrypt from "bcrypt";
 const SECRET = process.env.JWT_SECRET;
 
 export default async function handler(req, res) {
+  console.log(process.env.JWT_SECRET);
+  console.log(req.body);
   // ======== CORS ========
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173"); // seu frontend
+  res.setHeader("Access-Control-Allow-Origin", "mente-ativa-testanto.vercel.app"); 
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 

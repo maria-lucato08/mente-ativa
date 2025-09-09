@@ -11,7 +11,7 @@ const Login = () => {
   const inputConfirmPassword = useRef();
 
   const { login } = useAuth();
-  
+
   const navigate = useNavigate();
 
   async function createUsers(e) {
@@ -44,7 +44,6 @@ const Login = () => {
   async function loginUsers(e) {
     e.preventDefault();
 
-
     try {
       const response = await api.post("/login", {
         email: inputEmail.current.value,
@@ -52,8 +51,8 @@ const Login = () => {
       });
       // localStorage.setItem("token", response.data.token);
 
-      login({ username: response.data.username });
-      login({ username: inputEmail.current.value.split("@")[0] }); 
+      login({ username: response.data.user.name });
+      login({ username: inputEmail.current.value.split("@")[0] });
 
       navigate("/");
     } catch (err) {
@@ -64,30 +63,41 @@ const Login = () => {
   const [qualAba, setqualAba] = useState("login");
 
   const [preenchido, setPreenchido] = useState(false);
-  
-  function Switch(nAba){
-  var aba = nAba
-  setPreenchido(true);
-  setTimeout(()=>{setqualAba(aba);},1000)
-  setTimeout(() => {
-    setPreenchido(false);
-  }, 1000);
+
+  function Switch(nAba) {
+    var aba = nAba;
+    setPreenchido(true);
+    setTimeout(() => {
+      setqualAba(aba);
+    }, 1000);
+    setTimeout(() => {
+      setPreenchido(false);
+    }, 1000);
   }
 
   return (
     <div className={style.Cadastro}>
       <div>
         <div className={style.btnPrincipais}>
-        <button className={style.actions} onClick={()=>{Switch("login")}}>
-          Login
-        </button>
-        <button className={style.actions} onClick={()=>{Switch("cadastro")}}>
-          Cadastro
-        </button>
+          <button
+            className={style.actions}
+            onClick={() => {
+              Switch("login");
+            }}
+          >
+            Login
+          </button>
+          <button
+            className={style.actions}
+            onClick={() => {
+              Switch("cadastro");
+            }}
+          >
+            Cadastro
+          </button>
         </div>
-        
-        <div className={style.container}>
 
+        <div className={style.container}>
           {qualAba === "login" ? (
             <form className={style.forms} onSubmit={loginUsers}>
               <input
@@ -104,10 +114,14 @@ const Login = () => {
               />
 
               <div>
-                <button type="submit" className={style.btnEntrar}>Entrar</button>
+                <button type="submit" className={style.btnEntrar}>
+                  Entrar
+                </button>
                 <button
                   type="button"
-                  onClick={()=>{Switch("reset")}}
+                  onClick={() => {
+                    Switch("reset");
+                  }}
                 >
                   Esqueceu a senha?
                 </button>
@@ -142,7 +156,10 @@ const Login = () => {
               <button>Enviar link de recuperação</button>
             </form>
           ) : null}
-          <div id="circulo" className={`${style.circulo} ${preenchido ? style.preenchido : ''}`}></div>
+          <div
+            id="circulo"
+            className={`${style.circulo} ${preenchido ? style.preenchido : ""}`}
+          ></div>
         </div>
       </div>
     </div>
