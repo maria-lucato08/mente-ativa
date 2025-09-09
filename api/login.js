@@ -5,9 +5,10 @@ import bcrypt from "bcrypt";
 const SECRET = process.env.JWT_SECRET;
 
 export default async function handler(req, res) {
+  // ===== CORS =====
   const allowedOrigins = [
     "https://mente-ativa-testanto.vercel.app",
-    "https://mente-ativa-zopy.vercel.app", // se você quiser permitir o próprio backend
+    "https://mente-ativa-zopy.vercel.app",
     "http://localhost:5173", // para testes locais
   ];
   const origin = req.headers.origin;
@@ -24,11 +25,7 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  // responder preflight request
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
+  // ===== Apenas POST permitido =====
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Método não permitido" });
   }

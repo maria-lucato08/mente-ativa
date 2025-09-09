@@ -2,9 +2,10 @@ import prisma from "./prisma.js";
 import { authMiddleware } from "./auth.js";
 
 export default async function handler(req, res) {
+  // ===== CORS =====
   const allowedOrigins = [
     "https://mente-ativa-testanto.vercel.app",
-    "https://mente-ativa-zopy.vercel.app", // se você quiser permitir o próprio backend
+    "https://mente-ativa-zopy.vercel.app",
     "http://localhost:5173", // para testes locais
   ];
   const origin = req.headers.origin;
@@ -21,14 +22,10 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  // responder preflight request
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
+  // ===== GET: listar usuários (requer autenticação) =====
   if (req.method === "GET") {
     try {
-      const { user } = authMiddleware(req, res);
+      const { user } = authMiddleware(req, res); // valida token JWT
       const users = await prisma.cadastroUsers.findMany();
       return res.status(200).json(users);
     } catch (err) {
@@ -36,6 +33,7 @@ export default async function handler(req, res) {
     }
   }
 
+  // ===== POST: criar usuário =====
   if (req.method === "POST") {
     const bcrypt = await import("bcrypt");
     const { email, name, password } = req.body;
@@ -51,5 +49,6 @@ export default async function handler(req, res) {
     }
   }
 
+  // ===== Método não permitido =====
   return res.status(405).json({ message: "Método não permitido" });
 }
