@@ -1,27 +1,25 @@
 import prisma from "./prisma.js";
 import bcrypt from "bcrypt";
+import { applyCors } from "./_cors";
 
 export default async function handler(req, res) {
   try {
-    // ===== CORS =====
-    const origin = req.headers.origin;
-    if (
-      origin === "http://localhost:5173" ||
-      origin === "https://mente-ativa-zopy.vercel.app" ||
-      origin?.startsWith("https://mente-ativa-testanto-")
-    ) {
-      res.setHeader("Access-Control-Allow-Origin", origin);
+    // aplica CORS
+    if (applyCors(req, res)) return;
+
+    if (req.method !== "POST") {
+      return res.status(405).json({ message: "Método não permitido" });
     }
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-    // responder preflight OPTIONS
-    if (req.method === "OPTIONS") return res.status(200).end();
-
-    if (req.method !== "POST") return res.status(405).json({ message: "Método não permitido" });
 
     const { name, email, password } = req.body;
-    if (!name || !email || !password) return res.status(400).json({ message: "Todos os campos são obrigatórios" });
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: "Todos os campos são obrigatórios" });
+    }
+
+    const existing = await prisma.cadastroUsers.findUnique({ where: { email } });
+    if (existing) {
+      return res.status(409).json({ message: "Email já cadastrado" });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
     await prisma.cadastroUsers.create({ data: { name, email, password: hashedPassword } });

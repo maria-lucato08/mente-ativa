@@ -1,31 +1,23 @@
 import prisma from "./prisma.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { applyCors } from "./_cors";
 
 const SECRET = process.env.JWT_SECRET;
 
 export default async function handler(req, res) {
   try {
-    // ===== CORS =====
-    const origin = req.headers.origin;
-    if (
-      origin === "http://localhost:5173" ||
-      origin === "https://mente-ativa-zopy.vercel.app" ||
-      origin?.startsWith("https://mente-ativa-testanto-")
-    ) {
-      res.setHeader("Access-Control-Allow-Origin", origin);
+    // aplica CORS
+    if (applyCors(req, res)) return;
+
+    if (req.method !== "POST") {
+      return res.status(405).json({ message: "Método não permitido" });
     }
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-    // responder preflight OPTIONS
-    if (req.method === "OPTIONS") return res.status(200).end();
-
-    // ===== Apenas POST =====
-    if (req.method !== "POST") return res.status(405).json({ message: "Método não permitido" });
 
     const { email, password } = req.body;
-    if (!email || !password) return res.status(400).json({ message: "Email e senha são obrigatórios" });
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email e senha são obrigatórios" });
+    }
 
     const user = await prisma.cadastroUsers.findUnique({ where: { email } });
     if (!user) return res.status(401).json({ message: "Usuário não encontrado" });
