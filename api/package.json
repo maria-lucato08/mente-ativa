@@ -4,7 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-  "build": "prisma generate && node build.js"
+  "dev": "vercel dev",
+    "build": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.15.0",
