@@ -6,7 +6,7 @@ const SECRET = process.env.JWT_SECRET;
 
 export default async function handler(req, res) {
   const allowedOrigins = [
-    "https://mente-ativa-testanto-l658sur0r-maria-lucato08s-projects.vercel.app",
+    "https://mente-ativa-testanto.vercel.app",
     "https://mente-ativa-zopy.vercel.app", // se você quiser permitir o próprio backend
     "http://localhost:5173", // para testes locais
   ];
