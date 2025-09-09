@@ -1,51 +1,34 @@
 import prisma from "./prisma.js";
-import { authMiddleware } from "./auth.js";
+import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {
-  // ===== CORS dinâmico =====
-  const origin = req.headers.origin;
-
-  if (
-    origin === "http://localhost:5173" || // localhost
-    origin === "https://mente-ativa-zopy.vercel.app" || // backend
-    origin?.startsWith("https://mente-ativa-testanto-") // qualquer subdomínio Vercel do frontend
-  ) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-  // responder preflight OPTIONS
-  if (req.method === "OPTIONS") return res.status(200).end();
-
-  // ===== GET: listar usuários (requer autenticação) =====
-  if (req.method === "GET") {
-    try {
-      const { user } = authMiddleware(req, res);
-      const users = await prisma.cadastroUsers.findMany();
-      return res.status(200).json(users);
-    } catch (err) {
-      return res.status(401).json({ message: err.message });
+  try {
+    // ===== CORS =====
+    const origin = req.headers.origin;
+    if (
+      origin === "http://localhost:5173" ||
+      origin === "https://mente-ativa-zopy.vercel.app" ||
+      origin?.startsWith("https://mente-ativa-testanto-")
+    ) {
+      res.setHeader("Access-Control-Allow-Origin", origin);
     }
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+    // responder preflight OPTIONS
+    if (req.method === "OPTIONS") return res.status(200).end();
+
+    if (req.method !== "POST") return res.status(405).json({ message: "Método não permitido" });
+
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) return res.status(400).json({ message: "Todos os campos são obrigatórios" });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await prisma.cadastroUsers.create({ data: { name, email, password: hashedPassword } });
+
+    return res.status(201).json({ message: "Usuário cadastrado com sucesso" });
+  } catch (err) {
+    console.error("Cadastro error:", err);
+    return res.status(500).json({ message: "Erro interno", error: err.message });
   }
-
-  // ===== POST: criar usuário =====
-  if (req.method === "POST") {
-    const bcrypt = await import("bcrypt");
-    const { email, name, password } = req.body;
-
-    try {
-      const hashedPassword = await bcrypt.hash(password, 10);
-      await prisma.cadastroUsers.create({
-        data: { email, name, password: hashedPassword },
-      });
-      return res.status(201).json({ message: "Usuário cadastrado" });
-    } catch (err) {
-      return res.status(500).json({ message: "Erro ao cadastrar", error: err.message });
-    }
-  }
-
-  // ===== Método não permitido =====
-  return res.status(405).json({ message: "Método não permitido" });
 }

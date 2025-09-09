@@ -5,31 +5,28 @@ import bcrypt from "bcrypt";
 const SECRET = process.env.JWT_SECRET;
 
 export default async function handler(req, res) {
-  // ===== CORS dinâmico =====
-  const origin = req.headers.origin;
-
-  if (
-    origin === "http://localhost:5173" || // localhost
-    origin === "https://mente-ativa-zopy.vercel.app" || // backend
-    origin?.startsWith("https://mente-ativa-testanto-") // qualquer subdomínio Vercel do frontend
-  ) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-  // responder preflight OPTIONS
-  if (req.method === "OPTIONS") return res.status(200).end();
-
-  // ===== Apenas POST permitido =====
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Método não permitido" });
-  }
-
-  const { email, password } = req.body;
-
   try {
+    // ===== CORS =====
+    const origin = req.headers.origin;
+    if (
+      origin === "http://localhost:5173" ||
+      origin === "https://mente-ativa-zopy.vercel.app" ||
+      origin?.startsWith("https://mente-ativa-testanto-")
+    ) {
+      res.setHeader("Access-Control-Allow-Origin", origin);
+    }
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+    // responder preflight OPTIONS
+    if (req.method === "OPTIONS") return res.status(200).end();
+
+    // ===== Apenas POST =====
+    if (req.method !== "POST") return res.status(405).json({ message: "Método não permitido" });
+
+    const { email, password } = req.body;
+    if (!email || !password) return res.status(400).json({ message: "Email e senha são obrigatórios" });
+
     const user = await prisma.cadastroUsers.findUnique({ where: { email } });
     if (!user) return res.status(401).json({ message: "Usuário não encontrado" });
 
@@ -44,6 +41,7 @@ export default async function handler(req, res) {
       user: { id: user.id, name: user.name, email: user.email },
     });
   } catch (err) {
-    return res.status(500).json({ message: "Erro no login", error: err.message });
+    console.error("Login error:", err);
+    return res.status(500).json({ message: "Erro interno", error: err.message });
   }
 }
