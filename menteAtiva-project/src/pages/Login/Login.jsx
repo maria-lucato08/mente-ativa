@@ -26,7 +26,7 @@ const Login = () => {
     }
 
     try {
-      await api.post("/api/cadastro", {
+      await api.post("/cadastro", {
         name: inputName.current.value,
         email: inputEmail.current.value,
         password: password,
