@@ -49,7 +49,6 @@ const Login = () => {
         email: inputEmail.current.value,
         password: inputPassword.current.value,
       });
-      // localStorage.setItem("token", response.data.token);
 
       login({ username: response.data.user.name });
       login({ username: inputEmail.current.value.split("@")[0] });
